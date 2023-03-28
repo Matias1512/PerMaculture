@@ -4,20 +4,22 @@ The permaculture web project is designed to help people create their own permacu
 
 Made with 🍓 by Matias, Brice and Maxime.
 
-les bases de la permaculture :
+Permaculture Basics:
 
-1. Observation : Avant de planifier quoi que ce soit, il est important d'observer la nature et l'environnement dans lequel vous souhaitez créer votre jardin permaculturel. Cette observation doit être régulière pour permettre de comprendre les cycles naturels et les interactions entre les différents éléments.
+1. Observation: Before planning anything, it is important to observe nature and the environment in which you wish to create your permaculture garden. This observation must be regular to allow to understand the natural cycles and the interactions between the various elements.
 
-2. Planification : Une fois que vous avez une bonne compréhension de votre environnement, vous pouvez commencer à planifier votre jardin permaculturel. Cela peut inclure la conception de systèmes de culture, la sélection de plantes et d'animaux, et la planification des éléments structurels comme les sentiers et les étangs.
+2. Planning: Once you have a good understanding of your environment, you can begin to plan your permaculture garden. This may include designing growing systems, selecting plants and animals, and planning structural elements such as paths and ponds.
 
-3. Utilisation des ressources naturelles : La permaculture encourage l'utilisation des ressources naturelles comme l'eau, le soleil et le vent pour réduire l'impact environnemental et économique. Par exemple, l'eau de pluie peut être collectée et utilisée pour irriguer les cultures, tandis que la lumière du soleil peut être utilisée pour chauffer des serres.
+3. Use of Natural Resources: Permaculture encourages the use of natural resources such as water, sun and wind to reduce environmental and economic impact. For example, rainwater can be collected and used to irrigate crops, while sunlight can be used to heat greenhouses.
 
-4. Agencement de la biodiversité : La permaculture encourage l'agencement de la biodiversité dans les jardins. Cela signifie que les plantes, les animaux et les insectes doivent être sélectionnés pour leur capacité à travailler ensemble pour créer un système sain et résilient.
+4. Biodiversity arrangement: Permaculture encourages the arrangement of biodiversity in gardens. This means that plants, animals and insects should be selected for their ability to work together to create a healthy and resilient system.
 
-5. Utilisation de la zone : La permaculture utilise un système de zonage pour déterminer l'emplacement des différents éléments dans le jardin. Les éléments nécessitant le plus d'attention humaine, comme les cultures potagères, sont placés près de la maison, tandis que les éléments nécessitant moins d'attention, comme les arbres fruitiers, sont placés plus loin.
+5. Zone Use: Permaculture uses a zoning system to determine the location of different elements in the garden. Items requiring the most human attention, such as vegetable crops, are placed close to the house, while items requiring less attention, such as fruit trees, are placed further away.
 
-6. Techniques de culture durables : La permaculture encourage l'utilisation de techniques de culture durables, telles que la culture en buttes, la plantation de plantes compagnes, la rotation des cultures et l'utilisation de compost pour enrichir le sol.
+6. Sustainable Growing Techniques: Permaculture encourages the use of sustainable growing techniques, such as mounding, companion planting, crop rotation and the use of compost to enrich the soil.
 
-7. Conception en spirale : La permaculture utilise souvent une conception en spirale pour créer des systèmes qui imitent la nature. Cette conception permet de maximiser l'utilisation de l'espace et de créer des systèmes efficaces et résilients.
+7. Spiral Design: Permaculture often uses a spiral design to create systems that mimic nature. This design maximizes the use of space and creates efficient and resilient systems.
 
-Voilà les bases de la permaculture, il y a bien sûr beaucoup plus à apprendre et à explorer si vous êtes intéressé par cette pratique.
+These are the basics of permaculture, there is of course much more to learn and explore if you are interested in this practice.
+
+Translated with www.DeepL.com/Translator (free version)
