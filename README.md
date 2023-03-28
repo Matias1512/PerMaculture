@@ -21,5 +21,3 @@ Permaculture Basics:
 7. Spiral Design: Permaculture often uses a spiral design to create systems that mimic nature. This design maximizes the use of space and creates efficient and resilient systems.
 
 These are the basics of permaculture, there is of course much more to learn and explore if you are interested in this practice.
-
-Translated with www.DeepL.com/Translator (free version)
