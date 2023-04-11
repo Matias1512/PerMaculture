@@ -13,6 +13,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { FlowersComponent } from './flowers/flowers.component';
 import { InsectesComponent } from './insectes/insectes.component';
 import { Arbrescomponents} from './arbres/arbes.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { Arbrescomponents} from './arbres/arbes.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
