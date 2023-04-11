@@ -1,4 +1,4 @@
-use backend::models::*;
+use backend::models::plants::Plant;
 use diesel::prelude::*;
 
 fn main() {
@@ -11,8 +11,6 @@ fn main() {
 
     println!("Displaying {} plants", results.len());
     for plant in results {
-        println!("{}", plant.name);
-        println!("----------\n");
-        println!("{}", plant.description);
+        println!("{:?}", plant)
     }
 }
