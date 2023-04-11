@@ -2,6 +2,7 @@ use std::{env, net::SocketAddr};
 
 use axum::{Router, routing::{get, delete}, Extension};
 use deadpool_diesel::{postgres::{Manager, Pool}, Runtime};
+use tower_http::cors::CorsLayer;
 use dotenvy::dotenv;
 
 use backend::handlers::plants::{get_plants, create_plant, remove_plant};
@@ -26,6 +27,7 @@ fn main() {
                 )
                 .route("/plants/:id",
                     delete(remove_plant))
+                .layer(CorsLayer::permissive())
                 .layer(Extension(pool));
             let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
             println!("Listening on http://{}", addr);
