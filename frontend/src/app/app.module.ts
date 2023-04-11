@@ -13,6 +13,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { FlowersComponent } from './flowers/flowers.component';
 import { InsectesComponent } from './insectes/insectes.component';
 import { Arbrescomponents} from './arbres/arbes.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { PotagerComponent } from './potager/potager.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { Arbrescomponents} from './arbres/arbes.component';
     FlowersComponent,
     InsectesComponent,
     Arbrescomponents,
+    ConnexionComponent,
+    PotagerComponent,
   ],
   imports: [
     BrowserModule,
