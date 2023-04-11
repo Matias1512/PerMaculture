@@ -1,6 +1,6 @@
 .sidenav {
   background: #263228;
-  transition: all .3s ;
+  transition: all .1s;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,6 @@
       font-size: 24px;
       font-weight: 700;
       color: #fff;
-      white-space: pre;
     }
 
     .btn-close {
@@ -107,10 +106,10 @@
 .active{
   background-color: #fff;
 
-    .sidenav-link-icon,
-    .sidenav-link-text{
-      color:#000;
-    }
+  .sidenav-link-icon,
+  .sidenav-link-text{
+    color:#000;
+  }
 }
 
 .connexion{
