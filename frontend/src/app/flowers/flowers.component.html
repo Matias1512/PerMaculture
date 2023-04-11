@@ -1,2 +1,15 @@
 <h1>Flowers</h1>
-
+<div class="flowers">
+    <div *ngFor="let flower of plants" class="flower">
+        <div class="header">
+            <h2>{{flower.name}}</h2>
+            <ul>
+                <li class="blue">tag</li>
+                <li class="red">tag</li>
+                <li class="green">tag</li>
+            </ul>
+        </div>
+        <img [src]="flower.image" alt="Image de {{flower.name}}">
+        <p>{{flower.description}}</p>
+    </div>
+</div>
