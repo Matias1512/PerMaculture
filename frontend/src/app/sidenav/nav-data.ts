@@ -13,5 +13,19 @@ export const navbarData = [
     routerLink:'arbres',
     icon:'fal fa-tree',
     label:'Arbres'
+  },
+  {
+    routerLink:'potager',
+    icon:'fal fa-farm',
+    label:'Potager'
   }
 ];
+
+export const test= [
+  {
+    routerLink:'connexion',
+    icon:'fal fa-user',
+    label:'Connexion'
+  },
+]
+
