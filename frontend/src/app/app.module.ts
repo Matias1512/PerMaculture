@@ -13,6 +13,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { FlowersComponent } from './flowers/flowers.component';
 import { InsectesComponent } from './insectes/insectes.component';
 import { Arbrescomponents} from './arbres/arbes.component';
+import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { Arbrescomponents} from './arbres/arbes.component';
     FlowersComponent,
     InsectesComponent,
     Arbrescomponents,
+    FlowerModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { Arbrescomponents} from './arbres/arbes.component';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
