@@ -1,11 +1,11 @@
 use std::env;
 
-use diesel::{PgConnection, Connection, RunQueryDsl};
+use diesel::{PgConnection, Connection};
 use dotenvy::dotenv;
-use models::Plant;
 
 pub mod models;
 pub mod schema;
+pub mod handlers;
 
 pub fn establish_connection() -> PgConnection {
     dotenv().ok();
@@ -14,15 +14,4 @@ pub fn establish_connection() -> PgConnection {
         .expect("DATABASE_URL must be set");
     PgConnection::establish(&database_url)
         .unwrap_or_else(|_op| panic!("Error connecting to {}", database_url))
-}
-
-async fn get_plants() -> Result<Vec<Plant>, diesel::ConnectionError> {
-    use schema::plants::dsl::*;
-    
-    let conn = &mut establish_connection();
-    let results = plants
-        .load::<Plant>(conn)
-        .expect("Error loading plants");
-
-    Ok(results)
 }
