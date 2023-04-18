@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatDialogRef, MatDialog} from '@angular/material/dialog';
 import { FlowerModalComponent } from './flower-modal/flower-modal.component';
 import { PlantsService } from '../services/plants.service';
 import { Plant } from '../models/plant.interface';
+
+const PLANT_TYPES = {}
 
 @Component({
   selector: 'app-flowers',
@@ -10,13 +12,18 @@ import { Plant } from '../models/plant.interface';
   styleUrls: ['./flowers.component.scss']
 })
 
-export class FlowersComponent {
+export class FlowersComponent implements OnInit {
   plants: Plant[] = [];
+  public flowers: Plant[] = [];
 
   constructor(
     private dialog: MatDialog,
     private service: PlantsService
   ) {}
+
+  ngOnInit(): void {
+    this.showPlants();
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(FlowerModalComponent);
@@ -33,9 +40,38 @@ export class FlowersComponent {
         } else {
           return 0;
         }
-      });
-      // Set plants to the sorted array
-      this.plants = plants;
+      })
+      .filter((plant) => true /* Set other filters here (ex. plant.type === PLANT_TYPES.FLOWER) */);
+      this.flowers = plants;
     });
+  }
+
+  addSamplePlant() {
+    console.log("Adding sample plant")
+    this.service.postPlant().subscribe((plant) => {
+      console.log("Added plant:", plant);
+      this.showPlants();
+    });
+  }
+
+  verifyImageURL(url: string): string {
+    // Perform a GET request to the URL to verify it exists
+    // If not, return an empty string
+    // Else, return the URL
+    fetch(url).then((response) => {
+      if (response.status === 404) {
+        return '';
+      } else {
+        return url;
+      }
+    })
+    .then((url) => {
+      return url;
+    })
+    .catch((error) => {
+      return '';
+    })
+
+    return url;
   }
 }

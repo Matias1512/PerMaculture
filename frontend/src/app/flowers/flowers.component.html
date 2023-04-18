@@ -1,15 +1,16 @@
 <h1>Flowers</h1>
-<mat-card class="flower-card">
+<mat-card *ngFor="let flower of flowers" class="flower-card">
     <mat-card-header>
-      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-title>{{ flower.name }}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-image [src]="flower.image" alt="Photo of a {{ flower.name }}">
     <mat-card-content>
       <p>
-        Une belle plante
+        {{ flower.description }}
       </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button color="primary" class="detail-button" (click)="openDialog()">Detail</button>
+        <button mat-button color="primary" class="detail-button" (click)="openDialog()">Details</button>
     </mat-card-actions>
 </mat-card>
+<button (click)="addSamplePlant()" style="margin-bottom: 64px;">Nouveau</button>
