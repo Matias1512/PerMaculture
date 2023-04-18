@@ -1,22 +1,17 @@
 import { Component } from '@angular/core';
-import { PlantsService } from '../services/plants.service';
-import { Plant } from '../models/plant.interface'
+import {MatDialogRef, MatDialog} from '@angular/material/dialog';
+import { FlowerModalComponent } from './flower-modal/flower-modal.component';
 
 @Component({
   selector: 'app-flowers',
   templateUrl: './flowers.component.html',
   styleUrls: ['./flowers.component.scss']
 })
+
 export class FlowersComponent {
-  plants: Plant[] = [];
+  constructor(private dialog: MatDialog) {}
 
-  constructor(private plantService: PlantsService) {
-    this.showPlants();
-  }
-
-  showPlants() {
-    this.plantService.getPlants().subscribe((plants) => {
-      this.plants = plants;
-    });
+  openDialog() {
+    const dialogRef = this.dialog.open(FlowerModalComponent);
   }
 }

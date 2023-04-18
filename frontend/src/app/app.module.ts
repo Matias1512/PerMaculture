@@ -16,6 +16,9 @@ import { Arbrescomponents} from './arbres/arbes.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { PotagerComponent } from './potager/potager.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     Arbrescomponents,
     ConnexionComponent,
     PotagerComponent,
+    FlowerModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
+    MatDialogModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
