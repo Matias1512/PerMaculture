@@ -15,6 +15,7 @@ import { InsectesComponent } from './insectes/insectes.component';
 import { Arbrescomponents} from './arbres/arbes.component';
 import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSidenavModule,
     MatIconModule,
     MatDialogModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
