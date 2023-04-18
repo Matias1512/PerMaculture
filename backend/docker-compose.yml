@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    container_name: plantera-db
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: db
+    ports:
+      - 7000:5432
+  web:
+    restart: on-failure
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/db
