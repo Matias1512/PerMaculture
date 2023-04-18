@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Plant, PlantsService } from '../services/plants.service';
+import { PlantsService } from '../services/plants.service';
+import { Plant } from '../models/plant.interface'
 
 @Component({
   selector: 'app-flowers',
@@ -8,7 +9,7 @@ import { Plant, PlantsService } from '../services/plants.service';
 })
 export class FlowersComponent {
   plants: Plant[] = [];
-  
+
   constructor(private plantService: PlantsService) {
     this.showPlants();
   }

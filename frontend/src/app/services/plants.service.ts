@@ -1,15 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-
-export interface Plant {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-}
+import { Plant } from '../models/plant.interface'
 
 @Injectable({
   providedIn: 'root'
