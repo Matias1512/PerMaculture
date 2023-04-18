@@ -54,6 +54,19 @@ export class FlowersComponent implements OnInit {
     });
   }
 
+  deletePlant(id: number) {
+    this.service.deletePlant(id).subscribe((plant) => {
+      console.log("Deleted plant:", plant);
+      this.showPlants();
+    });
+  }
+
+  openDeleteDialog(plant: Plant) {
+    // Open a dialog to confirm deletion
+    // If confirmed, delete the plant
+    this.deletePlant(plant.id);
+  }
+
   verifyImageURL(url: string): string {
     // Perform a GET request to the URL to verify it exists
     // If not, return an empty string

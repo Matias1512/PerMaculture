@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Plant } from '../models/plant.interface'
 import { Observable } from 'rxjs';
 
-const PLANTS_ENDPOINT = 'http://localhost:8081/plants';
+const PLANTS_ENDPOINT = 'http://localhost:3000/plants';
 
 export type PostPlant = {
   name: string;
@@ -30,6 +30,10 @@ export class PlantsService {
       image_url: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
     }
     return this.http.post<Plant>(PLANTS_ENDPOINT, plant);
+  }
+
+  deletePlant(id: number): Observable<Plant> {
+    return this.http.delete<Plant>(`${PLANTS_ENDPOINT}/${id}`);
   }
 
 }
