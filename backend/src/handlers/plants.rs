@@ -105,3 +105,89 @@ pub async fn remove_plant(
 
     (StatusCode::OK, Json(result))
 }
+
+#[axum_macros::debug_handler]
+pub async fn get_plant(
+    Extension(pool): Extension<Pool>,
+    Path(plant_id): Path<i32>,
+) -> (StatusCode, Json<Plant>) {
+    use schema::plants::dsl::*;
+
+    let conn = match pool.get().await {
+        Ok(conn) => conn,
+        Err(e) => {
+            panic!("Error getting connection from pool: {}", e);
+        }
+    };
+    
+    let result = conn.interact(move |conn| {
+        let result = plants.filter(id.eq(plant_id)).first::<Plant>(conn);
+        result
+    }).await.expect("Error interacting with connection");
+
+    let result = match result {
+        Ok(plant) => plant,
+        Err(_e) => {
+            Plant::empty()
+        }
+    };
+
+    (StatusCode::OK, Json(result))
+}
+
+#[derive(serde::Serialize)]
+pub struct PatchResponse {
+    message: String,
+    updated_plant_id: i32,
+}
+
+#[axum_macros::debug_handler]
+pub async fn update_plant(
+    Extension(pool): Extension<Pool>,
+    Path(plant_id): Path<i32>,
+    Json(payload): Json<NewPlant>,
+) -> (StatusCode, Json<PatchResponse>) {
+    use schema::plants::dsl::*;
+
+    let conn = match pool.get().await {
+        Ok(conn) => conn,
+        Err(e) => {
+            panic!("Error getting connection from pool: {}", e);
+        }
+    };
+    
+    let result = conn.interact(move |conn| {
+        let result = match diesel::update(plants.filter(id.eq(plant_id)))
+            .set(&payload)
+            .execute(conn) {
+                Ok(affected_rows) => affected_rows,
+                Err(e) => {
+                    panic!("Error updating plant: {}", e);
+                }
+            };
+        result
+    }).await.unwrap_or_default();
+
+    if result == 0 {
+        let result = PatchResponse {
+            message: "Plant not found".to_string(),
+            updated_plant_id: plant_id,
+        };
+        return (StatusCode::NOT_FOUND, Json(result));
+    }
+
+    if result > 1 {
+        let result = PatchResponse {
+            message: "Multiple plants updated".to_string(),
+            updated_plant_id: plant_id,
+        };
+        return (StatusCode::INTERNAL_SERVER_ERROR, Json(result));
+    }
+
+    let result = PatchResponse {
+        message: "Plant updated successfully".to_string(),
+        updated_plant_id: plant_id,
+    };
+
+    (StatusCode::OK, Json(result))
+}
