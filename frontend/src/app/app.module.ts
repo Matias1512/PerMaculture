@@ -25,6 +25,7 @@ import { Arbrescomponents} from './arbres/arbes.component';
 import { PotagerComponent } from './potager/potager.component';
 import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.component';
 import { LoadButtonComponent } from './forms/load-button/load-button.component';
+import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { LoadButtonComponent } from './forms/load-button/load-button.component';
     PotagerComponent,
     FlowerModalComponent,
     LoadButtonComponent,
+    DeleteWarningFlowerComponent,
   ],
   imports: [
     BrowserModule,
