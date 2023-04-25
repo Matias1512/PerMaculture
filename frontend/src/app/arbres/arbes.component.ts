@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Arbres } from '../models/arbres.interface';
 
 @Component({
   selector: 'app-arbes',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./arbes.component.scss']
 })
 export class Arbrescomponents {
+
+  arbres: Arbres[] = [];
 
 }

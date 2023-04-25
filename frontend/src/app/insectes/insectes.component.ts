@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Insectes } from '../models/insectes.interface';
+
 
 @Component({
   selector: 'app-insectes',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class InsectesComponent {
 
+    insectes : Insectes[] = []
 }
