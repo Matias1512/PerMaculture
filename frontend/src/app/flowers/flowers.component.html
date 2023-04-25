@@ -1,15 +1,16 @@
-<h1>Flowers</h1>
-<div class="flowers">
-    <div *ngFor="let flower of plants" class="flower">
-        <div class="header">
-            <h2>{{flower.name}}</h2>
-            <ul>
-                <li class="blue">tag</li>
-                <li class="red">tag</li>
-                <li class="green">tag</li>
-            </ul>
-        </div>
-        <img [src]="flower.image_url" alt="Image de {{flower.name}}">
-        <p>{{flower.description}}</p>
-    </div>
-</div>
+<mat-card *ngFor="let flower of flowers" class="flower-card">
+    <mat-card-header>
+      <mat-card-title>{{ flower.name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="flower.image" alt="Photo of a {{ flower.name }}">
+    <mat-card-content>
+      <p>
+        {{ flower.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="primary" class="detail-button" (click)="openDialog()">Details</button>
+        <button mat-button color="danger" class="delete-button" (click)="openDeleteDialog(flower)">Supprimer</button>
+    </mat-card-actions>
+</mat-card>
+<button (click)="addSamplePlant()" style="margin-bottom: 64px;">Nouveau</button>

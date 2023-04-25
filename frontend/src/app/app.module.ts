@@ -13,7 +13,12 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { FlowersComponent } from './flowers/flowers.component';
 import { InsectesComponent } from './insectes/insectes.component';
 import { Arbrescomponents} from './arbres/arbes.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { PotagerComponent } from './potager/potager.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     FlowersComponent,
     InsectesComponent,
     Arbrescomponents,
+    ConnexionComponent,
+    PotagerComponent,
+    FlowerModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
+    MatDialogModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
