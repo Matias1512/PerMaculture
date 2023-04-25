@@ -11,7 +11,18 @@ pub struct Plant {
     pub image_url: Option<String>,
 }
 
-#[derive(Insertable, Deserialize)]
+impl Plant {
+    pub fn empty() -> Self {
+        Self {
+            id: 0,
+            name: String::new(),
+            description: String::new(),
+            image_url: None,
+        }
+    }
+}
+
+#[derive(Insertable, Deserialize, AsChangeset)]
 #[diesel(table_name = plants)]
 pub struct NewPlant {
     pub name: String,
