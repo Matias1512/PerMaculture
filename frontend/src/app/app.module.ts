@@ -29,6 +29,7 @@ import { CardMeteoComponent } from './card-meteo/card-meteo.component';
 import { ButtonAddComponent } from './button-add/button-add.component';
 import { MeteoComponent } from './meteo/meteo.component';
 import { LoadButtonComponent } from './forms/load-button/load-button.component';
+import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LoadButtonComponent } from './forms/load-button/load-button.component';
     ButtonAddComponent,
     MeteoComponent,
     LoadButtonComponent,
+    DeleteWarningFlowerComponent,
   ],
   imports: [
     BrowserModule,
