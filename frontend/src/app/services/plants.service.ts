@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Plant } from '../models/plant.interface'
 import { Observable } from 'rxjs';
 
-const PLANTS_ENDPOINT = 'http://localhost:3000/plants';
+const PLANTS_ENDPOINT = 'http://localhost:8081/plants';
 
 export type PostPlant = {
   name: string;

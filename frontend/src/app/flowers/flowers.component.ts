@@ -3,6 +3,7 @@ import {MatDialogRef, MatDialog} from '@angular/material/dialog';
 import { FlowerModalComponent } from './flower-modal/flower-modal.component';
 import { PlantsService } from '../services/plants.service';
 import { Plant } from '../models/plant.interface';
+import { DeleteWarningFlowerComponent } from './delete-warning-flower/delete-warning-flower.component';
 
 const PLANT_TYPES = {}
 
@@ -63,8 +64,14 @@ export class FlowersComponent implements OnInit {
 
   openDeleteDialog(plant: Plant) {
     // Open a dialog to confirm deletion
-    // If confirmed, delete the plant
-    this.deletePlant(plant.id);
+    const dialogRef = this.dialog.open(DeleteWarningFlowerComponent);
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if(result){
+        this.deletePlant(plant.id);
+      }
+    });
   }
 
   verifyImageURL(url: string): string {
