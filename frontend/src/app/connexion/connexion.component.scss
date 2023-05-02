@@ -11,6 +11,10 @@ form {
     display: flex;
     flex-flow: column nowrap;
 
+    & div.error {
+        color: #c24442
+    }
+
     label {
         font-weight: bold;
         font-size: 14px;
@@ -31,13 +35,9 @@ form {
             width: 100%;
         }
 
-        &.ng-invalid.ng-dirty.ng-touched {
+        &.error {
             border-color: #c24442;
             box-shadow: 0 0 5px rgba(221, 52, 52, 0.5);
-        }
-
-        &.ng-valid[required], .ng-valid.required  {
-            border-color: #42A948;
         }
     }
 

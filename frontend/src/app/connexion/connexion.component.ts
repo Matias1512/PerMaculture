@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -8,10 +8,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 	styleUrls: ['./connexion.component.scss']
 })
 export class ConnexionComponent {
-	formStatus = {
-		loading: false,
-		success: false,
-	}
+	error_message = ''
+	loading = false
 	loginForm = new FormGroup({
 		email: new FormControl('', [
 			Validators.required,
@@ -26,13 +24,16 @@ export class ConnexionComponent {
 	constructor(private http: HttpClient) { }
 
 	onSubmit() {
-		this.formStatus.loading = true
-		this.http.post('http://localhost:3000/login', this.loginForm.value).subscribe((res: any) => {
-			console.log(res)
-			// localStorage.setItem('token', res.token)
-			// localStorage.setItem('user', JSON.stringify(res.user))
-			this.formStatus.loading = false
-			this.loginForm.reset()
-		})
+		this.loading = true
+	}
+
+	get emailError() {
+		return this.loginForm.get('email')?.invalid && 
+		(this.loginForm.get('email')?.dirty || this.loginForm.get('email')?.touched)
+	}
+
+	get passwordError() {
+		return this.loginForm.get('password')?.invalid && 
+		(this.loginForm.get('password')?.dirty || this.loginForm.get('password')?.touched)
 	}
 }
