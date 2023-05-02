@@ -2,7 +2,7 @@ use axum::{Extension, http::StatusCode, Json, extract::Path};
 use deadpool_diesel::postgres::Pool;
 use diesel::{RunQueryDsl, QueryDsl, prelude::*};
 
-use crate::{models::plants::{Plant, NewPlant}, schema};
+use crate::{models::{plants::{Plant, NewPlant}, Response}, schema};
 
 #[axum_macros::debug_handler]
 pub async fn get_plants(
@@ -51,17 +51,11 @@ pub async fn create_plant(
     (StatusCode::CREATED, Json(result))
 }
 
-#[derive(serde::Serialize)]
-pub struct DeletionResponse {
-    message: String,
-    deleted_plant_id: i32,
-}
-
 #[axum_macros::debug_handler]
 pub async fn remove_plant(
     Extension(pool): Extension<Pool>,
     Path(plant_id): Path<i32>,
-) -> (StatusCode, Json<DeletionResponse>) {
+) -> (StatusCode, Json<Response>) {
     use schema::plants::dsl::*;
 
     let conn = match pool.get().await {
@@ -83,24 +77,24 @@ pub async fn remove_plant(
     }).await.unwrap_or_default();
 
     if result == 0 {
-        let result = DeletionResponse {
+        let result = Response {
             message: "Plant not found".to_string(),
-            deleted_plant_id: id_to_delete,
+            id: id_to_delete,
         };
         return (StatusCode::NOT_FOUND, Json(result));
     }
 
     if result > 1 {
-        let result = DeletionResponse {
+        let result = Response {
             message: "Multiple plants deleted".to_string(),
-            deleted_plant_id: id_to_delete,
+            id: id_to_delete,
         };
         return (StatusCode::INTERNAL_SERVER_ERROR, Json(result));
     }
 
-    let result = DeletionResponse {
+    let result = Response {
         message: "Plant deleted successfully".to_string(),
-        deleted_plant_id: id_to_delete,
+        id: id_to_delete,
     };
 
     (StatusCode::OK, Json(result))
@@ -135,18 +129,12 @@ pub async fn get_plant(
     (StatusCode::OK, Json(result))
 }
 
-#[derive(serde::Serialize)]
-pub struct PatchResponse {
-    message: String,
-    updated_plant_id: i32,
-}
-
 #[axum_macros::debug_handler]
 pub async fn update_plant(
     Extension(pool): Extension<Pool>,
     Path(plant_id): Path<i32>,
     Json(payload): Json<NewPlant>,
-) -> (StatusCode, Json<PatchResponse>) {
+) -> (StatusCode, Json<Response>) {
     use schema::plants::dsl::*;
 
     let conn = match pool.get().await {
@@ -169,24 +157,24 @@ pub async fn update_plant(
     }).await.unwrap_or_default();
 
     if result == 0 {
-        let result = PatchResponse {
+        let result = Response {
             message: "Plant not found".to_string(),
-            updated_plant_id: plant_id,
+            id: plant_id,
         };
         return (StatusCode::NOT_FOUND, Json(result));
     }
 
     if result > 1 {
-        let result = PatchResponse {
+        let result = Response {
             message: "Multiple plants updated".to_string(),
-            updated_plant_id: plant_id,
+            id: plant_id,
         };
         return (StatusCode::INTERNAL_SERVER_ERROR, Json(result));
     }
 
-    let result = PatchResponse {
+    let result = Response {
         message: "Plant updated successfully".to_string(),
-        updated_plant_id: plant_id,
+        id: plant_id,
     };
 
     (StatusCode::OK, Json(result))
