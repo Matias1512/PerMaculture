@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
     ConnexionComponent,
     PotagerComponent,
     FlowerModalComponent,
+    DeleteWarningFlowerComponent,
   ],
   imports: [
     BrowserModule,
