@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Plant } from '../models/plant.interface'
 import { Observable } from 'rxjs';
 
-const PLANTS_ENDPOINT = 'http://localhost:3000/plants';
+const PLANTS_ENDPOINT = 'http://localhost:8081/plants';
 
 export type PostPlant = {
   name: string;
@@ -25,9 +25,9 @@ export class PlantsService {
   postPlant(plant?: PostPlant): Observable<Plant> {
     console.log("Post plant:", plant)
     if (!plant) plant = {
-      name: 'Test Plant',
-      description: 'This is a test plant',
-      image_url: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
+      name: 'Tournesol',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+      image_url: 'https://static.aujardin.info/cache/th/img9/lilium-fleur-600x450.jpg'
     }
     return this.http.post<Plant>(PLANTS_ENDPOINT, plant);
   }
