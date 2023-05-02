@@ -6,7 +6,7 @@ import Config from 'src/config';
 
 const LOGIN_ENDPOINT = `${Config.API_ENDPOINT}/login`;
 
-const LOGIN_ENDPOINT = 'http://localhost:3000/login';
+const LOGIN_ENDPOINT = 'http://localhost:3000/login'
 
 @Injectable({
 	providedIn: 'any'
