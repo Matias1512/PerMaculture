@@ -1,16 +1,23 @@
+<div class="container-card">
 <mat-card *ngFor="let flower of flowers" class="flower-card">
-    <mat-card-header>
+    <mat-card-header class="title-card">
       <mat-card-title>{{ flower.name }}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image [src]="flower.image" alt="Photo of a {{ flower.name }}">
-    <mat-card-content>
+    <img mat-card-image [src]="flower.image_url" alt="Photo of a {{ flower.name }}" class="picture">
+    <mat-card-content class="container-description">
       <p>
         {{ flower.description }}
       </p>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-button color="primary" class="detail-button" (click)="openDialog()">Details</button>
-        <button mat-button color="danger" class="delete-button" (click)="openDeleteDialog(flower)">Supprimer</button>
+    <mat-card-actions class="container-button">
+        <button mat-button color="danger" class="detail-button" (click)="openDialog()">
+          <span class="material-symbols-outlined visibility">visibility</span>
+        </button>
+        <button mat-button color="primary" class="delete-button" (click)="openDeleteDialog(flower)">
+          <span class="material-symbols-outlined delete">delete</span>
+        </button>
     </mat-card-actions>
 </mat-card>
+</div>
+
 <button (click)="addSamplePlant()" style="margin-bottom: 64px;">Nouveau</button>
