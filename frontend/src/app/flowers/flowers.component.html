@@ -10,7 +10,7 @@
       </p>
     </mat-card-content>
     <mat-card-actions class="container-button">
-        <button mat-button color="danger" class="detail-button" (click)="openDialog()">
+        <button mat-button color="danger" class="detail-button" (click)="openDialog(flower)">
           <span class="material-symbols-outlined visibility">visibility</span>
         </button>
         <button mat-button color="primary" class="delete-button" (click)="openDeleteDialog(flower)">
@@ -19,5 +19,4 @@
     </mat-card-actions>
 </mat-card>
 </div>
-
 <button (click)="addSamplePlant()" style="margin-bottom: 64px;">Nouveau</button>
