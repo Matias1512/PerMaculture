@@ -1,0 +1,7 @@
+<button [disabled]="btn_disabled" [type]="btn_type">
+    <mat-progress-spinner *ngIf="btn_condition; else elseBlock" 
+        id="spinner" mode="indeterminate" diameter="20" strokeWidth="4" [color]="'red'" />
+    <ng-template #elseBlock>
+        {{ btn_text }}
+    </ng-template>
+</button>

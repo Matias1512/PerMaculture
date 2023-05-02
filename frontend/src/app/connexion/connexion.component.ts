@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core'
-import { Keeper } from '../models/keeper.interface'
-import { AuthentifierService } from '../services/authentifier.service'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-connexion',
@@ -8,28 +8,31 @@ import { AuthentifierService } from '../services/authentifier.service'
 	styleUrls: ['./connexion.component.scss']
 })
 export class ConnexionComponent {
-	submitted = false
-	model: Keeper = {
-		userName: '',
-		displayName: '',
-		email: '',
-		password: '',
-		isAdmin: false
+	formStatus = {
+		loading: false,
+		success: false,
 	}
+	loginForm = new FormGroup({
+		email: new FormControl('', [
+			Validators.required,
+			Validators.email
+		]),
+		password: new FormControl('', [
+			Validators.required,
+			Validators.minLength(8)
+		])
+	})
 
-	constructor(private service: AuthentifierService) { }
+	constructor(private http: HttpClient) { }
 
 	onSubmit() {
-		this.submitted = true
-	}
-
-	newGardener() {
-		this.model = {
-			userName: '',
-			displayName: '',
-			email: '',
-			password: '',
-			isAdmin: false
-		}
+		this.formStatus.loading = true
+		this.http.post('http://localhost:3000/login', this.loginForm.value).subscribe((res: any) => {
+			console.log(res)
+			// localStorage.setItem('token', res.token)
+			// localStorage.setItem('user', JSON.stringify(res.user))
+			this.formStatus.loading = false
+			this.loginForm.reset()
+		})
 	}
 }

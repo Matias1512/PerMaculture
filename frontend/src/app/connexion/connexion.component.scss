@@ -14,13 +14,12 @@ form {
     label {
         font-weight: bold;
         font-size: 14px;
-        margin-bottom: 5px;
+        margin: 10px 0 5px 0;
 
         color: #333;
     }
 
     input:not(.checkbox) {
-        margin-bottom: 10px;
         padding: .5em;
         align-self: flex-start;
 
@@ -32,11 +31,8 @@ form {
             width: 100%;
         }
 
-        &.ng-invalid {
+        &.ng-invalid.ng-dirty.ng-touched {
             border-color: #c24442;
-            margin-bottom: 0;
-            // border-bottom-left-radius: 0;
-            // border-bottom-right-radius: 0;
             box-shadow: 0 0 5px rgba(221, 52, 52, 0.5);
         }
 
@@ -50,7 +46,7 @@ form {
     }
 
     .alert.alert-danger {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         padding: 5px;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
@@ -82,16 +78,6 @@ form {
             font-weight: bold;
             &:hover {
                 cursor: pointer;
-            }
-        }
-
-        button[type="submit"] {
-            color: #3d683d;
-            background-color: #a7eba7;
-
-            &:hover {
-                color: #5baf5b;
-                background-color: #acfaac;
             }
         }
     }
