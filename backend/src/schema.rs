@@ -17,6 +17,19 @@ diesel::table! {
 }
 
 diesel::table! {
+    keepers (id) {
+        id -> Int4,
+        user_name -> Varchar,
+        display_name -> Varchar,
+        email -> Varchar,
+        password -> Varchar,
+        is_admin -> Bool,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+diesel::table! {
     use diesel::sql_types::*;
     use super::sql_types::InteractionType;
 
@@ -41,6 +54,7 @@ diesel::joinable!(plant_bugs_interactions -> plants (plant_id));
 
 diesel::allow_tables_to_appear_in_same_query!(
     bugs,
+    keepers,
     plant_bugs_interactions,
     plants,
 );
