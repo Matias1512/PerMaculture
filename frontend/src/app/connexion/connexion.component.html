@@ -1,39 +1,39 @@
 <h1>Connexion / Inscription</h1>
 <hr><br><br>
-<form (ngSubmit)="onSubmit()" #keeperForm="ngForm" [hidden]="submitted">
-    <h2>Garderner Informations</h2>
-
-    <label for="userName">Name</label>
-    <input type="text" id="userName" name="userName" required [(ngModel)]="model.userName"
-        placeholder="Type your unique gardener username" #userName="ngModel">
-    <div [hidden]="userName.valid" class="alert alert-danger">
-        Name is required
-    </div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Login form</h2>
 
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" required [(ngModel)]="model.email" placeholder="Type your email address"
-        #email="ngModel">
-    <div [hidden]="email.valid" class="alert alert-danger">
-        Email is required
+    <input type="email" id="email" formControlName="email"  placeholder="Type your email address">
+    <div *ngIf="loginForm.get('email')?.invalid && 
+        (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="alert alert-danger">
+        <div *ngIf="loginForm.get('email')?.getError('required')">
+            Email is required.
+        </div>
+        <div *ngIf="loginForm.get('email')?.getError('email')">
+            Email is invalid.
+        </div>
     </div>
 
     <label for="password">Password</label>
-    <input type="password" id="password" name="password" required [(ngModel)]="model.password"
-        placeholder="Use a strong passphrase" #password="ngModel">
-    <div [hidden]="password.valid" class="alert alert-danger">
-        Password is required
+    <input type="password" id="password" formControlName="password" placeholder="Use a strong passphrase">
+    <div *ngIf="loginForm.get('email')?.invalid && 
+        (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="alert alert-danger">
+        <div *ngIf="loginForm.get('password')?.getError('required')">
+            Password is required.
+        </div>
+        <div *ngIf="loginForm.get('password')?.getError('minlength')">
+            Password must be at least 8 characters long.
+        </div>
     </div>
 
-    <span>
-        <label for="isAdmin">Is a Super-Gardener?</label>
-        <input type="checkbox" id="isAdmin" name="isAdmin" class="checkbox" [(ngModel)]="model.isAdmin" disabled
-            #isAdmin="ngModel">
-    </span>
-
     <span class="actions">
-        <button type="submit" (click)="newGardener(); keeperForm.reset()" [disabled]="!keeperForm.form.valid">
-            Envoyer
-        </button>
+        <app-load-button
+            [btn_condition]="formStatus.loading"
+            [btn_disabled]="loginForm.invalid"
+            [btn_text]="'Envoyer'"
+            [btn_type]="'submit'"
+        />
         <button>
             Annuler
         </button>
