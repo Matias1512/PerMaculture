@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-potager',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./potager.component.scss']
 })
 export class PotagerComponent {
-
+  
 }
+ 
