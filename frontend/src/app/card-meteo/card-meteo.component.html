@@ -1,17 +1,60 @@
 <div class="container-card">
-    <div *ngFor="let temp of tempsArray; let i = index" >
-        <ng-container *ngIf="i * 24 + 14 <= 158">
+    <div *ngFor="let temp of tempsArray; let i = index">
+        <ng-container *ngIf="i == 14 || i == 38 || i == 62 || i == 86 || i == 110 || i == 134 || i == 158">
             <mat-card class="meteo-card">
-                <!-- incone -->
+                <ng-container *ngIf="01 <= weathercode[i] && weathercode[i] <= 09">
+                    <mat-card-content class="meteo-content">
+                        <span class="material-symbols-outlined sunny">sunny</span>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="10 <= weathercode[i] && weathercode[i] <= 19">
+                    <mat-card-content class="meteo-content">
+                        <span class="material-symbols-outlined cloudy">cloudy</span>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="20 <= weathercode[i] && weathercode[i] <= 29">
+                    <mat-card-content class="meteo-content">
+                        <span class="material-symbols-outlined rainy">rainy</span>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="30 <= weathercode[i] && weathercode[i] <= 39">
+                    <mat-card-content class="meteo-content">
+                        <span class="material-symbols-outlined cloudy_snowing">cloudy_snowing</span>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="40 <= weathercode[i] && weathercode[i] <= 49">
+                    <mat-card-content class="meteo-content">
+                        <span class="material-symbols-outlined thunderstorm">thunderstorm</span>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="50 <= weathercode[i] && weathercode[i] <= 59">
+                    <mat-card-content class="meteo-content">
+                        <span class="material-symbols-outlined mist">mist</span>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="60 <= weathercode[i] && weathercode[i] <= 69">
+                    <mat-card-content class="meteo-content">
+                        <span class="material-symbols-outlined rainy">rainy</span>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="70 <= weathercode[i] && weathercode[i] <= 79">
+                    <mat-card-content class="meteo-content">
+                        <span class="material-symbols-outlined rainy">rainy</span>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="79 <= weathercode[i]">
+                    <mat-card-content class="meteo-content">
+                        <span class="material-symbols-outlined rainy">rainy</span>
+                    </mat-card-content>
+                </ng-container>
+
                 <mat-card-content class="meteo-content">
                     <p>{{ temp }} °C</p>
                 </mat-card-content>
                 <mat-card-actions class="meteo-content">
-                    <p>{{convertUnixTime(dateArray[i*24+14])}}</p>
+                    <p>{{convertUnixTime(dateArray[i])}}</p>
                 </mat-card-actions>
             </mat-card>
         </ng-container>
     </div>
 </div>
-
-<button (click)="onMeteo()">Refresh</button>
