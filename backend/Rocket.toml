@@ -1,0 +1,3 @@
+[default.databases.plantera_db]
+url = "postgres://postgres:example@localhost:8001/postgres"
+
