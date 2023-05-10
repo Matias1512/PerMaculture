@@ -58,3 +58,9 @@
         </ng-container>
     </div>
 </div>
+<div *ngFor="let temp of tempsArray; let i = index">
+    <ng-container *ngIf="i * 24 + 14 <= 158">
+    {{ temp }} °C {{dateArray[i*24+14]}}
+ </ng-container>
+</div>
+<button (click)="onMeteo()">Refresh</button>
