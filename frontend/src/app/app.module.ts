@@ -26,6 +26,7 @@ import { PotagerComponent } from './potager/potager.component';
 import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.component';
 import { LoadButtonComponent } from './forms/load-button/load-button.component';
 import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
+import { CardMeteoComponent } from './card-meteo/card-meteo.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/de
     FlowerModalComponent,
     LoadButtonComponent,
     DeleteWarningFlowerComponent,
+    CardMeteoComponent,
   ],
   imports: [
     BrowserModule,
