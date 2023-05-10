@@ -1,6 +1,17 @@
-<div *ngFor="let temp of tempsArray; let i = index">
-    <ng-container *ngIf="i * 24 + 14 <= 158">
-    {{ temp }} °C {{dateArray[i*24+14]}}
- </ng-container>
+<div class="container-card">
+    <div *ngFor="let temp of tempsArray; let i = index" >
+        <ng-container *ngIf="i * 24 + 14 <= 158">
+            <mat-card class="meteo-card">
+                <!-- incone -->
+                <mat-card-content class="meteo-content">
+                    <p>{{ temp }} °C</p>
+                </mat-card-content>
+                <mat-card-actions class="meteo-content">
+                    <p>{{convertUnixTime(dateArray[i*24+14])}}</p>
+                </mat-card-actions>
+            </mat-card>
+        </ng-container>
+    </div>
 </div>
+
 <button (click)="onMeteo()">Refresh</button>

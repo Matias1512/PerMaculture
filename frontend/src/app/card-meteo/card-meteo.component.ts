@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-meteo.component.scss']
 })
 export class CardMeteoComponent {
-  public temperature: number = 0;
   public dateTimeVisual: string = "";
   public tempsArray: string[] = [];
   public dateArray: string[]= [];
+  public weathercode: number[] = [];
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -28,12 +28,12 @@ export class CardMeteoComponent {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         this.dateTimeVisual = `${month}-${day}`;
-        this.http.get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m&timeformat=unixtime`).subscribe((data: any) => {
+        this.http.get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&timeformat=unixtime&timezone=auto`).subscribe((data: any) => {
           const index = data.hourly.time.indexOf(dateTime);
           console.log(data);
-          this.temperature = data.hourly.temperature_2m[index];
           this.tempsArray = data.hourly.temperature_2m;
           this.dateArray = data.hourly.time;
+          this.weathercode = data.hourly.weathercode;
         });
       });
     } else {
@@ -41,8 +41,8 @@ export class CardMeteoComponent {
     }
   } 
 
-  convertUnixTime(timestamp: number) {
-    const date = new Date(timestamp * 1000); // Convertir les secondes en millisecondes
+  convertUnixTime(timestamp: string) {
+    const date = new Date(Number.parseInt(timestamp)* 1000); // Convertir les secondes en millisecondes
     const day = date.getDate();
     const month = date.getMonth() + 1; // Les mois commencent à 0, donc ajouter 1
     return `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}`;
