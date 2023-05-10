@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Keeper, LoginKeeper } from '../models/keeper.interface'
 
-const LOGIN_ENDPOINT = 'http://localhost:3000/login'
+import Config from 'src/config';
+
+const LOGIN_ENDPOINT = `${Config.API_ENDPOINT}/login`;
 
 @Injectable({
 	providedIn: 'any'

@@ -1,9 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Plant } from '../models/plant.interface'
 import { Observable } from 'rxjs';
 
-const PLANTS_ENDPOINT = 'http://localhost:8081/plants';
+import Config from 'src/config';
+
+const PLANTS_ENDPOINT = `${Config.API_ENDPOINT}/plants`;
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+}
 
 export type PostPlant = {
   name: string;
@@ -19,7 +25,7 @@ export class PlantsService {
   constructor(private http: HttpClient) { }
 
   getPlants(): Observable<Plant[]> {
-    return this.http.get<Plant[]>(PLANTS_ENDPOINT);
+    return this.http.get<Plant[]>(PLANTS_ENDPOINT, httpOptions);
   }
 
   postPlant(plant?: PostPlant): Observable<Plant> {

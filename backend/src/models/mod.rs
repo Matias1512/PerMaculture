@@ -1,16 +1,8 @@
+use rocket_sync_db_pools::{diesel, database};
+
 pub mod plants;
 pub mod bugs;
-pub mod interactions;
-pub mod keepers; 
+pub mod trees;
 
-#[derive(serde::Serialize)]
-pub struct Response {
-    pub message: String,
-    pub id: i32,
-}
-
-#[derive(serde::Serialize)]
-pub struct LoginResponse {
-    pub message: String,
-    pub token: String,
-}
+#[database("plantera_db")]
+pub struct Db(diesel::PgConnection);
