@@ -1,15 +1,5 @@
 version: '3'
 services:
-  #  frontend:
-  #    build:
-  #   context: frontend
-  #    target: development
-  # networks:
-  #   - client-side
-  # ports:
-  #   - 4200:4200
-  # volumes:
-  #   - ./frontend/src:/code/src:ro
   backend:
     image: kroyoda/plantera-api:latest
     environment:
@@ -17,8 +7,8 @@ services:
       - PG_DBNAME=postgres
       - PG_HOST=db
       - PG_USER=postgres
-      - PG_PASSWORD=mysecretpassword
-      - DATABASE_URL=postgres://postgres:mysecretpassword@db:5432/postgres
+      - PG_PASSWORD=pLaNtsss19781684
+      - DATABASE_URL=postgres://postgres:pLaNtsss19781684@db:5432/plantera_db
     networks:
       - client-side
       - server-side
@@ -28,19 +18,19 @@ services:
     depends_on:
       - db
     ports:
-      - 8081:3000
+      - 8000:8000
   db:
-    image: postgres:15-alpine
+    image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pLaNtsss19781684
+      POSTGRES_DB: plantera_db
     networks:
       - server-side
-    # ports:
-    #   - 8082:5432
     volumes:
       - db-data:/var/lib/postgresql/data
-      - ./init_db.sql:/docker-entrypoint-initdb.d/db.sql
+      # - ./init_db.sql:/docker-entrypoint-initdb.d/db.sql
 networks:
   client-side: {}
   server-side: {}
