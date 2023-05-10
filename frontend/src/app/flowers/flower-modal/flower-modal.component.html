@@ -1,5 +1,12 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+<div class="container-modal-card">
+  <h1 mat-dialog-title class="title">{{data.flower.name}}</h1>
+  <div mat-dialog-content class="picture">
+    <img mat-card-image [src]="data.flower.image_url" alt="Photo of a {{data.flower.name}}">
+  </div>
+  <div mat-dialog-content>
+    <p>{{data.flower.description}}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close class="buttonClose">Close</button>
+  </div>
 </div>

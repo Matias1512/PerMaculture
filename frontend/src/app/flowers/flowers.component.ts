@@ -7,6 +7,10 @@ import { DeleteWarningFlowerComponent } from './delete-warning-flower/delete-war
 
 const PLANT_TYPES = {}
 
+export interface DialogData {
+  flower : Plant
+}
+
 @Component({
   selector: 'app-flowers',
   templateUrl: './flowers.component.html',
@@ -26,8 +30,10 @@ export class FlowersComponent implements OnInit {
     this.showPlants();
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(FlowerModalComponent);
+  openDialog(plant : Plant) {
+    const dialogRef = this.dialog.open(FlowerModalComponent, {
+      data: {flower : plant}
+    });
   }
 
   showPlants() {
@@ -67,7 +73,6 @@ export class FlowersComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteWarningFlowerComponent);
     
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if(result){
         this.deletePlant(plant.id);
       }

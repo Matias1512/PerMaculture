@@ -21,6 +21,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
 import { CardMeteoComponent } from './card-meteo/card-meteo.component';
+import { ButtonAddComponent } from './button-add/button-add.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { MeteoComponent } from './meteo/meteo.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { CardMeteoComponent } from './card-meteo/card-meteo.component';
     FlowerModalComponent,
     DeleteWarningFlowerComponent,
     CardMeteoComponent,
+    ButtonAddComponent,
+    MeteoComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,7 @@ import { CardMeteoComponent } from './card-meteo/card-meteo.component';
     MatIconModule,
     MatDialogModule,
     MatCardModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
