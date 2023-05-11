@@ -2,7 +2,7 @@
     <div *ngFor="let temp of tempsArray; let i = index">
         <ng-container *ngIf="i == 14 || i == 38 || i == 62 || i == 86 || i == 110 || i == 134 || i == 158">
             <mat-card class="meteo-card">
-                <ng-container *ngIf="01 <= weathercode[i] && weathercode[i] <= 09">
+                <ng-container *ngIf="0 <= weathercode[i] && weathercode[i] <= 9">
                     <mat-card-content class="meteo-content">
                         <span class="material-symbols-outlined sunny">sunny</span>
                     </mat-card-content>
@@ -42,7 +42,7 @@
                         <span class="material-symbols-outlined rainy">rainy</span>
                     </mat-card-content>
                 </ng-container>
-                <ng-container *ngIf="79 <= weathercode[i]">
+                <ng-container *ngIf="80 <= weathercode[i]">
                     <mat-card-content class="meteo-content">
                         <span class="material-symbols-outlined rainy">rainy</span>
                     </mat-card-content>
@@ -55,10 +55,5 @@
             </mat-card>
         </ng-container>
     </div>
-</div>
-<div *ngFor="let temp of tempsArray; let i = index">
-  <ng-container *ngIf="i * 24 + 14 <= 158">
-    {{ temp }} °C {{ dateArray[i * 24 + 14] }}
-  </ng-container>
 </div>
 <button (click)="onMeteo()">Refresh</button>
