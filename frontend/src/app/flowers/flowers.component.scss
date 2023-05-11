@@ -1,23 +1,23 @@
 .detail-button {
-    color: #000;
+  color: #000;
 }
 
 .flower-card {
-    max-width: 350px;
-    background-color: #fff;
-    margin: 15px 16px;
+  max-width: 350px;
+  background-color: #fff;
+  margin: 15px 16px;
 }
-.container-card{
+.container-card {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.title-card{
+.title-card {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 }
-.mat-mdc-card.mdc-card.flower-card{
+.mat-mdc-card.mdc-card.flower-card {
   background-color: darkseagreen;
 }
 .container-description {
@@ -27,27 +27,27 @@
   -webkit-box-orient: vertical;
   gap: 8px;
 }
-.container-button{
+.container-button {
   display: flex;
   justify-content: center;
 }
-.picture{
+.picture {
   display: flex;
   height: 250px;
   margin-bottom: 10px;
 }
-.delete{
+.delete {
   display: flex;
   justify-content: center;
   font-size: 30px;
 }
-.visibility{
+.visibility {
   display: flex;
   justify-content: center;
   font-size: 30px;
 }
 
-.button-add{
+.button-add {
   position: fixed;
   display: block;
 
@@ -59,6 +59,4 @@
 
   border: none;
   outline: none;
-
 }
-
