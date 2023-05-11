@@ -1,1 +1,23 @@
-<app-card-meteo></app-card-meteo>
+<!-- <app-card-meteo></app-card-meteo> -->
+
+<div class="garden">
+  <div *ngFor="let parcel of parcels" class="parcel" (click)="onClickParcel(parcel)"></div>
+</div>
+
+<div class="warehouse">
+  <div class="header">
+    <p *ngIf="selectedParcel">
+      <span>
+        <strong>Parcelle {{ selectedParcel.id }}</strong>
+      </span>
+      <span *ngIf="!selectedParcel.empty">
+        <p>Rien n'a été planté dans cette parcelle.</p>
+      </span>
+    </p>
+    <p *ngIf="!selectedParcel">
+      <span class="title">Aucune parcelle sélectionnée.</span>
+    </p>
+  </div>
+</div>
+
+<!-- <app-radial-menu /> -->
