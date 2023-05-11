@@ -1,1 +1,37 @@
-<p>insectes works!</p>
+<div class="container-card">
+  <mat-card *ngFor="let insect of insectes" class="arbre-card">
+    <mat-card-header class="title-card">
+      <mat-card-title>{{ insect.name }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="insect.image_url"
+      alt="Photo of a {{ insect.name }}"
+      class="picture"
+    />
+    <mat-card-content class="container-description">
+      <p>
+        {{ insect.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="container-button">
+      <button
+        mat-button
+        color="danger"
+        class="detail-button"
+        (click)="openDialog(insect)"
+      >
+        <span class="material-symbols-outlined visibility">visibility</span>
+      </button>
+      <button
+        mat-button
+        color="primary"
+        class="delete-button"
+        (click)="openDeleteDialog(insect)"
+      >
+        <span class="material-symbols-outlined delete">delete</span>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<app-button-add class="button-add" (click)="addSampleInsect()"></app-button-add>
