@@ -1,193 +1,63 @@
-use axum::{Extension, http::StatusCode, Json, extract::Path};
-use deadpool_diesel::postgres::Pool;
-use diesel::{RunQueryDsl, QueryDsl, prelude::*};
+use diesel::{QueryDsl, RunQueryDsl, ExpressionMethods, insert_into};
+use rocket::{serde::json::Json, response::status::Created};
+use crate::models::{plants::{Plant, plants, NewPlant, UpdatePlant}, Db};
 
-use crate::{models::plants::{Plant, NewPlant}, schema};
+use super::Result;
 
-#[axum_macros::debug_handler]
-pub async fn get_plants(
-    Extension(pool): Extension<Pool>
-) -> (StatusCode, Json<Vec<Plant>>) {
-    use schema::plants::dsl::*;
+#[get("/")]
+pub async fn get_plants(db: Db) -> Result<Json<Vec<Plant>>> {
+    let plants = db.run(move |conn| {
+        plants::table
+            .select(plants::all_columns)
+            .load::<Plant>(conn)
+    }).await?;
     
-    let conn = match pool.get().await {
-        Ok(conn) => conn,
-        Err(e) => {
-            panic!("Error getting connection from pool: {}", e);
-        }
-    };
-    
-    let result = conn.interact(|conn| {
-        let result: Vec<Plant> = plants.load::<Plant>(conn)
-            .expect("Error loading plants");
-        result
-    }).await.expect("Error interacting with connection");
-
-    (StatusCode::OK, Json(result))
+    Ok(Json(plants))
 }
 
-#[axum_macros::debug_handler]
-pub async fn create_plant(
-    Extension(pool): Extension<Pool>,
-    Json(payload): Json<NewPlant>,
-) -> (StatusCode, Json<Plant>) {
-    use schema::plants;
-
-    let conn = match pool.get().await {
-        Ok(conn) => conn,
-        Err(e) => {
-            panic!("Error getting connection from pool: {}", e);
-        }
-    };
-    
-    let result = conn.interact(move |conn| {
-        let result = diesel::insert_into(plants::table)
-            .values(&payload)
-            .get_result(conn)
-            .expect("Error saving new plant");
-        result
-    }).await.expect("Error interacting with connection");
-
-    (StatusCode::CREATED, Json(result))
+#[post("/", data = "<plant>")]
+pub async fn post_plant(db: Db, plant: Json<NewPlant>) -> Result<Created<Json<Plant>>> {
+    db.run(move |conn| {
+        insert_into(plants::table)
+            .values(plant.into_inner())
+            .get_result::<Plant>(conn)
+    }).await.map(|plant| {
+        Created::new("/plants")
+            .body(Json(plant))
+    }).map_err(Into::into)
 }
 
-#[derive(serde::Serialize)]
-pub struct DeletionResponse {
-    message: String,
-    deleted_plant_id: i32,
+#[get("/<id>")]
+pub async fn get_plant(db: Db, id: i32) -> Option<Json<Plant>> {
+    db.run(move |conn| {
+        plants::table
+            .filter(plants::id.eq(id))
+            .first(conn)
+    }).await.map(Json).ok()
 }
 
-#[axum_macros::debug_handler]
-pub async fn remove_plant(
-    Extension(pool): Extension<Pool>,
-    Path(plant_id): Path<i32>,
-) -> (StatusCode, Json<DeletionResponse>) {
-    use schema::plants::dsl::*;
-
-    let conn = match pool.get().await {
-        Ok(conn) => conn,
-        Err(e) => {
-            panic!("Error getting connection from pool: {}", e);
-        }
-    };
-    
-    let id_to_delete = plant_id;
-    let result = conn.interact(move |conn| {
-        let result = match diesel::delete(plants.filter(id.eq(id_to_delete))).execute(conn) {
-            Ok(affected_rows) => affected_rows,
-            Err(e) => {
-                panic!("Error deleting plant: {}", e);
-            }
-        };
-        result
-    }).await.unwrap_or_default();
-
-    if result == 0 {
-        let result = DeletionResponse {
-            message: "Plant not found".to_string(),
-            deleted_plant_id: id_to_delete,
-        };
-        return (StatusCode::NOT_FOUND, Json(result));
-    }
-
-    if result > 1 {
-        let result = DeletionResponse {
-            message: "Multiple plants deleted".to_string(),
-            deleted_plant_id: id_to_delete,
-        };
-        return (StatusCode::INTERNAL_SERVER_ERROR, Json(result));
-    }
-
-    let result = DeletionResponse {
-        message: "Plant deleted successfully".to_string(),
-        deleted_plant_id: id_to_delete,
-    };
-
-    (StatusCode::OK, Json(result))
+#[put("/<id>", data = "<plant>")]
+pub fn put_plant(id: i32, plant: Json<Plant>) -> Result<Json<Plant>> {
+    Ok(plant)
 }
 
-#[axum_macros::debug_handler]
-pub async fn get_plant(
-    Extension(pool): Extension<Pool>,
-    Path(plant_id): Path<i32>,
-) -> (StatusCode, Json<Plant>) {
-    use schema::plants::dsl::*;
-
-    let conn = match pool.get().await {
-        Ok(conn) => conn,
-        Err(e) => {
-            panic!("Error getting connection from pool: {}", e);
-        }
-    };
-    
-    let result = conn.interact(move |conn| {
-        let result = plants.filter(id.eq(plant_id)).first::<Plant>(conn);
-        result
-    }).await.expect("Error interacting with connection");
-
-    let result = match result {
-        Ok(plant) => plant,
-        Err(_e) => {
-            Plant::empty()
-        }
-    };
-
-    (StatusCode::OK, Json(result))
+#[patch("/<id>", data = "<plant>")]
+pub async fn patch_plant(db: Db, id: i32, plant: Json<UpdatePlant>) -> Result<Json<Plant>> {
+    db.run(move |conn| {
+        diesel::update(plants::table)
+            .filter(plants::id.eq(id))
+            .set(plant.into_inner())
+            .get_result::<Plant>(conn)
+    }).await.map(Json).map_err(Into::into)
 }
 
-#[derive(serde::Serialize)]
-pub struct PatchResponse {
-    message: String,
-    updated_plant_id: i32,
-}
+#[delete("/<id>")]
+pub async fn delete_plant(db: Db, id: i32) -> Result<Option<()>> {
+    let affected = db.run(move |conn| {
+        diesel::delete(plants::table)
+            .filter(plants::id.eq(id))
+            .execute(conn)
+    }).await?;
 
-#[axum_macros::debug_handler]
-pub async fn update_plant(
-    Extension(pool): Extension<Pool>,
-    Path(plant_id): Path<i32>,
-    Json(payload): Json<NewPlant>,
-) -> (StatusCode, Json<PatchResponse>) {
-    use schema::plants::dsl::*;
-
-    let conn = match pool.get().await {
-        Ok(conn) => conn,
-        Err(e) => {
-            panic!("Error getting connection from pool: {}", e);
-        }
-    };
-    
-    let result = conn.interact(move |conn| {
-        let result = match diesel::update(plants.filter(id.eq(plant_id)))
-            .set(&payload)
-            .execute(conn) {
-                Ok(affected_rows) => affected_rows,
-                Err(e) => {
-                    panic!("Error updating plant: {}", e);
-                }
-            };
-        result
-    }).await.unwrap_or_default();
-
-    if result == 0 {
-        let result = PatchResponse {
-            message: "Plant not found".to_string(),
-            updated_plant_id: plant_id,
-        };
-        return (StatusCode::NOT_FOUND, Json(result));
-    }
-
-    if result > 1 {
-        let result = PatchResponse {
-            message: "Multiple plants updated".to_string(),
-            updated_plant_id: plant_id,
-        };
-        return (StatusCode::INTERNAL_SERVER_ERROR, Json(result));
-    }
-
-    let result = PatchResponse {
-        message: "Plant updated successfully".to_string(),
-        updated_plant_id: plant_id,
-    };
-
-    (StatusCode::OK, Json(result))
+    Ok((affected == 1).then(|| ()))
 }

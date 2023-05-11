@@ -11,6 +11,8 @@ export class CardMeteoComponent {
   public tempsArray: string[] = [];
   public dateArray: string[]= [];
   public weathercode: number[] = [];
+  public temperature: number = 0;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class CardMeteoComponent {
         this.http.get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&timeformat=unixtime&timezone=auto`).subscribe((data: any) => {
           const index = data.hourly.time.indexOf(dateTime);
           console.log(data);
+          this.temperature = data.hourly.temperature_2m[index];
           this.tempsArray = data.hourly.temperature_2m;
           this.dateArray = data.hourly.time;
           this.weathercode = data.hourly.weathercode;
@@ -39,7 +42,7 @@ export class CardMeteoComponent {
     } else {
       console.log("La géolocalisation n'est pas prise en charge par votre navigateur.");
     }
-  } 
+  }
 
   convertUnixTime(timestamp: string) {
     const date = new Date(Number.parseInt(timestamp)* 1000); // Convertir les secondes en millisecondes

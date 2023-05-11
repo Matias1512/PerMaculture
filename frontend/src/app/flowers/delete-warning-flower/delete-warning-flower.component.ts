@@ -11,5 +11,5 @@ import { PlantsService } from 'src/app/services/plants.service';
 })
 
 export class DeleteWarningFlowerComponent {
-  
+
 }

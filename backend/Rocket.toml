@@ -1,0 +1,2 @@
+[default.databases.plantera_db]
+url = "postgres://postgres:pLaNtsss19781684@db:5432/plantera_db"

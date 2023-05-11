@@ -1,22 +1,37 @@
 <div class="container-card">
-<mat-card *ngFor="let flower of flowers" class="flower-card">
+  <mat-card *ngFor="let flower of flowers" class="flower-card">
     <mat-card-header class="title-card">
       <mat-card-title>{{ flower.name }}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image [src]="flower.image_url" alt="Photo of a {{ flower.name }}" class="picture">
+    <img
+      mat-card-image
+      [src]="flower.image_url"
+      alt="Photo of a {{ flower.name }}"
+      class="picture"
+    />
     <mat-card-content class="container-description">
       <p>
         {{ flower.description }}
       </p>
     </mat-card-content>
     <mat-card-actions class="container-button">
-        <button mat-button color="danger" class="detail-button" (click)="openDialog(flower)">
-          <span class="material-symbols-outlined visibility">visibility</span>
-        </button>
-        <button mat-button color="primary" class="delete-button" (click)="openDeleteDialog(flower)">
-          <span class="material-symbols-outlined delete">delete</span>
-        </button>
+      <button
+        mat-button
+        color="danger"
+        class="detail-button"
+        (click)="openDialog(flower)"
+      >
+        <span class="material-symbols-outlined visibility">visibility</span>
+      </button>
+      <button
+        mat-button
+        color="primary"
+        class="delete-button"
+        (click)="openDeleteDialog(flower)"
+      >
+        <span class="material-symbols-outlined delete">delete</span>
+      </button>
     </mat-card-actions>
-</mat-card>
+  </mat-card>
 </div>
 <app-button-add class="button-add" (click)="addSamplePlant()"></app-button-add>
