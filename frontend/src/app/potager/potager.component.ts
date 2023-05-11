@@ -5,7 +5,7 @@ type Item = {
   quantity: number;
 };
 
-type WarehouseParcel = {
+type CropFieldParcel = {
   id: number;
   name: string;
   empty?: boolean;
@@ -17,8 +17,8 @@ type WarehouseParcel = {
   styleUrls: ['./potager.component.scss']
 })
 export class PotagerComponent {
-  parcels: WarehouseParcel[] = [];
-  selectedParcel: WarehouseParcel | null = null;
+  parcels: CropFieldParcel[] = [];
+  selectedParcel: CropFieldParcel | null = null;
 
   items: Item[] = [
     { name: 'Tomate', quantity: 10 },
@@ -41,7 +41,7 @@ export class PotagerComponent {
     }
   }
 
-  onClickParcel(parcel: WarehouseParcel) {
+  onClickParcel(parcel: CropFieldParcel) {
     this.selectedParcel = parcel;
     console.log(parcel);
   }
