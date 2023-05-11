@@ -1,45 +1,54 @@
 <h1>Connexion / Inscription</h1>
-<hr><br><br>
+<hr />
+<br /><br />
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <h2>Login form</h2>
+  <h2>Login form</h2>
 
-    <div *ngIf="loginForm.invalid" class="error">
-        {{ error_message }}
+  <div *ngIf="loginForm.invalid" class="error">
+    {{ error_message }}
+  </div>
+
+  <label for="email">Email</label>
+  <input
+    type="email"
+    id="email"
+    formControlName="email"
+    [className]="emailError ? 'error' : ''"
+    placeholder="Type your email address"
+  />
+  <div *ngIf="emailError" class="alert alert-danger">
+    <div *ngIf="loginForm.get('email')?.getError('required')">
+      Email is required.
     </div>
-
-    <label for="email">Email</label>
-    <input type="email" id="email" formControlName="email" 
-        [className]="emailError ? 'error':''" placeholder="Type your email address">
-    <div *ngIf="emailError" class="alert alert-danger">
-        <div *ngIf="loginForm.get('email')?.getError('required')">
-            Email is required.
-        </div>
-        <div *ngIf="loginForm.get('email')?.getError('email')">
-            Email is invalid.
-        </div>
+    <div *ngIf="loginForm.get('email')?.getError('email')">
+      Email is invalid.
     </div>
+  </div>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" formControlName="password"
-        [className]="passwordError ? 'error':''" placeholder="Use a strong passphrase">
-    <div *ngIf="passwordError" class="alert alert-danger">
-        <div *ngIf="loginForm.get('password')?.getError('required')">
-            Password is required.
-        </div>
-        <div *ngIf="loginForm.get('password')?.getError('minlength')">
-            Password must be at least 8 characters long.
-        </div>
+  <label for="password">Password</label>
+  <input
+    type="password"
+    id="password"
+    formControlName="password"
+    [className]="passwordError ? 'error' : ''"
+    placeholder="Use a strong passphrase"
+  />
+  <div *ngIf="passwordError" class="alert alert-danger">
+    <div *ngIf="loginForm.get('password')?.getError('required')">
+      Password is required.
     </div>
+    <div *ngIf="loginForm.get('password')?.getError('minlength')">
+      Password must be at least 8 characters long.
+    </div>
+  </div>
 
-    <span class="actions">
-        <app-load-button
-            [btn_condition]="loading"
-            [btn_disabled]="loginForm.invalid"
-            [btn_text]="'Envoyer'"
-            [btn_type]="'submit'"
-        />
-        <button>
-            Annuler
-        </button>
-    </span>
+  <span class="actions">
+    <app-load-button
+      [btn_condition]="loading"
+      [btn_disabled]="loginForm.invalid"
+      [btn_text]="'Envoyer'"
+      [btn_type]="'submit'"
+    />
+    <button>Annuler</button>
+  </span>
 </form>
