@@ -3,7 +3,6 @@ use rocket::{serde::json::Json, response::status::Created};
 use crate::models::{plants::{Plant, plants, NewPlant, UpdatePlant}, Db};
 
 use super::Result;
-use crate::{models::{plants::{Plant, NewPlant}, Response}, schema};
 
 #[get("/")]
 pub async fn get_plants(db: Db) -> Result<Json<Vec<Plant>>> {

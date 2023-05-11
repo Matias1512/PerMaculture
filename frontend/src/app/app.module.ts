@@ -24,15 +24,11 @@ import { InsectesComponent } from './insectes/insectes.component';
 import { Arbrescomponents} from './arbres/arbes.component';
 import { PotagerComponent } from './potager/potager.component';
 import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.component';
-import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
-import { CardMeteoComponent } from './card-meteo/card-meteo.component';
-import { ButtonAddComponent } from './button-add/button-add.component';
-import { MeteoComponent } from './meteo/meteo.component';
 import { LoadButtonComponent } from './forms/load-button/load-button.component';
 import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
 import { CardMeteoComponent } from './card-meteo/card-meteo.component';
-import { ButtonAddComponent } from './button-add/button-add.component';
-import { MeteoComponent } from './meteo/meteo.component';
+// import { ButtonAddComponent } from './button-add/button-add.component';
+// import { MeteoComponent } from './meteo/meteo.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +43,11 @@ import { MeteoComponent } from './meteo/meteo.component';
     FlowerModalComponent,
     DeleteWarningFlowerComponent,
     CardMeteoComponent,
-    ButtonAddComponent,
-    MeteoComponent,
     LoadButtonComponent,
     DeleteWarningFlowerComponent,
     CardMeteoComponent,
-    ButtonAddComponent,
-    MeteoComponent,
+    // ButtonAddComponent,
+    // MeteoComponent,
   ],
   imports: [
     BrowserModule,
