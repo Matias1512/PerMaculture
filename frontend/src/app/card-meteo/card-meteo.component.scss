@@ -1,12 +1,22 @@
 .meteo-card {
-    max-width: 80px;
-    background-color: #fff;
-    margin: 15px 16px;
+  width: 100px;
+  background-color: #fff;
+  gap: 8px;
+  margin: 15px;
 }
 
 .meteo-content {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 8px;
+}
+.temp-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 8px;
 }
 
 .container-card{
