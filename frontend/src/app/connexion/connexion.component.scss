@@ -1,0 +1,86 @@
+form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  & div.error {
+    color: #c24442;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 10px 0 5px 0;
+
+    color: #333;
+  }
+
+  input:not(.checkbox) {
+    padding: 0.5em;
+    align-self: flex-start;
+
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid gray;
+
+    &[type="text"],
+    &[type="password"],
+    &[type="email"] {
+      width: 100%;
+    }
+
+    &.error {
+      border-color: #c24442;
+      box-shadow: 0 0 5px rgba(221, 52, 52, 0.5);
+    }
+  }
+
+  input.checkbox {
+    margin-left: 15px;
+  }
+
+  .alert.alert-danger {
+    margin-bottom: 5px;
+    padding: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #e05252;
+    background-color: #ffd5d8;
+
+    width: calc(100% - 6px);
+    align-self: center;
+
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 8px;
+  }
+
+  span.actions {
+    margin-top: 12px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    button {
+      padding: 0.6em 0.8em;
+      border-radius: 5px;
+
+      outline: none;
+      border: none;
+      color: #333;
+
+      font-weight: bold;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
