@@ -1,0 +1,62 @@
+.detail-button {
+  color: #000;
+}
+
+.insecte-card {
+  max-width: 350px;
+  background-color: #fff;
+  margin: 15px 16px;
+}
+.container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.title-card {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.mat-mdc-card.mdc-card.insecte-card {
+  background-color: darkseagreen;
+}
+.container-description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  gap: 8px;
+}
+.container-button {
+  display: flex;
+  justify-content: center;
+}
+.picture {
+  display: flex;
+  height: 250px;
+  margin-bottom: 10px;
+}
+.delete {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+.visibility {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.button-add {
+  position: fixed;
+  display: block;
+
+  right: 35px;
+  bottom: 25px;
+
+  font-size: 2em;
+  padding: 15px;
+
+  border: none;
+  outline: none;
+}
