@@ -1,0 +1,9 @@
+<ul [class.active]="isContextualMenuOpen" class="menu">
+  <div (click)="toggleActive()" class="toggle">X</div>
+  <li *ngFor="let mOpt of menuOptions"
+    style="--i:{{ mOpt.id }};--clr:{{ mOpt.color }}">
+    <a href="#">
+      <app-radial-menu-icon [icon]="mOpt.icon" />
+    </a>
+  </li>
+</ul>

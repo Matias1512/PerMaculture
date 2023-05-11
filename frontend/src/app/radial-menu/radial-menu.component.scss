@@ -1,0 +1,58 @@
+
+.menu {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  justify-content: center;
+  align-items: center;
+
+  & li {
+    position: absolute;
+    left: 0;
+    list-style: none;
+    transition: 0.5s;
+    transition-delay: calc(0.1s * var(--i));
+    transform-origin: 140px;
+    transform: rotate(0deg) translateX(110px);
+
+    & a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      color: var(--clr);
+      border: 2px solid var(--clr);
+      border-radius: 50%;
+      font-size: 1.5em;
+      transform: rotate(calc(360deg / -8 * var(--i))) translateX(0px);
+    }
+  }
+
+  & .toggle {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    width: 60px;
+    height: 60px;
+    background: #2f363e;
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 99;
+    font-size: 2em;
+    transition: transform 1.25s;
+  }
+
+  & .active {
+    transform: rotate(315deg);
+  }
+}
+
+.menu.active li {
+  transform: rotate(calc(360deg / 8 * var(--i))) translateX(0px);
+}
