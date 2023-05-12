@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ArbresService} from "../services/arbres.service";
 import {FlowerModalComponent} from "../flowers/flower-modal/flower-modal.component";
 import { ArbresModalComponent } from './arbres-modal/arbres-modal.component';
+import { DeleteWarningArbresComponent } from './delete-warning-arbres/delete-warning-arbres.component';
 
 export interface DialogData {
   arbre: Arbres;
@@ -16,8 +17,8 @@ export interface DialogData {
 })
 export class Arbrescomponents  implements OnInit{
 
-  arbres: Arbres[] = [];
-  public Arbres: Arbres[] = [];
+  trees: Arbres[] = [];
+  public arbres: Arbres[] = [];
 
   constructor(private dialog: MatDialog, private service: ArbresService) {}
 
@@ -25,9 +26,9 @@ export class Arbrescomponents  implements OnInit{
     this.showArbres();
   }
 
-  openDialog(arbre: Arbres) {
+  openDialog(trees: Arbres) {
     const dialogRef = this.dialog.open(ArbresModalComponent, {
-      data: { arbres: arbre },
+      data: { arbre: trees },
     });
   }
 
@@ -53,28 +54,27 @@ export class Arbrescomponents  implements OnInit{
   }
 
   addSampleArbre() {
-    console.log('Adding sample arbre');
-    this.service.postArbres().subscribe((arbre) => {
-      console.log('Added arbre:', arbre);
+    console.log('Adding sample tree');
+    this.service.postArbres().subscribe((trees) => {
+      console.log('Added arbre:', trees);
       this.showArbres();
     });
   }
 
   deletePlant(id: number) {
-    this.service.deleteArbre(id).subscribe((arbre) => {
-      console.log('Deleted arbre:', arbre);
+    this.service.deleteArbre(id).subscribe((trees) => {
+      console.log('Deleted arbre:', trees);
       this.showArbres();
     });
   }
-  openDeleteDialog(arbre: Arbres) {
-    // Open a dialog to confirm deletion
-  //  const dialogRef = this.dialog.open(DeleteWarningArbresComponent);
+  openDeleteDialog(trees: Arbres) {
+    const dialogRef = this.dialog.open(DeleteWarningArbresComponent);
 
-   // dialogRef.afterClosed().subscribe((result) => {
-   //   if (result) {
-   //     this.deletePlant(plant.id);
-     // }
-  //  });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deletePlant(trees.id);
+      }
+    });
   }
 
   verifyImageURL(url: string): string {

@@ -3,6 +3,7 @@ import { Insectes } from '../models/insectes.interface';
 import {MatDialog} from "@angular/material/dialog";
 import {BugsService} from "../services/bugs.service";
 import {FlowerModalComponent} from "../flowers/flower-modal/flower-modal.component";
+import { DeleteWarningInsectesComponent } from './delete-warning-insectes/delete-warning-insectes.component';
 
 
 export interface DialogData {
@@ -68,13 +69,13 @@ export class InsectesComponent implements OnInit{
   }
   openDeleteDialog(bugs: Insectes) {
     // Open a dialog to confirm deletion
-    //  const dialogRef = this.dialog.open(DeleteWarningArbresComponent);
+     const dialogRef = this.dialog.open(DeleteWarningInsectesComponent);
 
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result) {
-    //     this.deletePlant(bugs.id);
-    // }
-    //  });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deletePlant(bugs.id);
+      }
+    });
   }
 
   verifyImageURL(url: string): string {
