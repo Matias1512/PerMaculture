@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {BugsService} from "../services/bugs.service";
 import {FlowerModalComponent} from "../flowers/flower-modal/flower-modal.component";
 import { DeleteWarningInsectesComponent } from './delete-warning-insectes/delete-warning-insectes.component';
+import { InsectesModalComponent } from './insectes-modal/insectes-modal.component';
 
 
 export interface DialogData {
@@ -26,9 +27,9 @@ export class InsectesComponent implements OnInit{
     this.showInsect();
   }
 
-  openDialog(insect: Insectes) {
-    const dialogRef = this.dialog.open(FlowerModalComponent, {
-      data: { insectes: insect },
+  openDialog(bug: Insectes) {
+    const dialogRef = this.dialog.open(InsectesModalComponent, {
+      data: { insectes: bug },
     });
   }
 

@@ -10,8 +10,9 @@ import { DialogData } from '../insectes.component';
 export class InsectesModalComponent implements OnInit {
   constructor( 
     private dialog: MatDialogRef<InsectesModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, ) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData ) {}
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 }
