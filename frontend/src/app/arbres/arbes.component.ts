@@ -3,6 +3,7 @@ import { Arbres } from '../models/arbres.interface';
 import {MatDialog} from "@angular/material/dialog";
 import {ArbresService} from "../services/arbres.service";
 import {FlowerModalComponent} from "../flowers/flower-modal/flower-modal.component";
+import { ArbresModalComponent } from './arbres-modal/arbres-modal.component';
 
 export interface DialogData {
   arbre: Arbres;
@@ -25,7 +26,7 @@ export class Arbrescomponents  implements OnInit{
   }
 
   openDialog(arbre: Arbres) {
-    const dialogRef = this.dialog.open(FlowerModalComponent, {
+    const dialogRef = this.dialog.open(ArbresModalComponent, {
       data: { arbres: arbre },
     });
   }

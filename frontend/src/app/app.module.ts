@@ -27,8 +27,10 @@ import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.compon
 import { LoadButtonComponent } from './forms/load-button/load-button.component';
 import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
 import { CardMeteoComponent } from './card-meteo/card-meteo.component';
-import { ButtonAddComponent } from './button-add/button-add.component';
-import { MeteoComponent } from './meteo/meteo.component';
+import { ArbresModalComponent } from './arbres/arbres-modal/arbres-modal.component';
+import { InsectesModalComponent } from './insectes/insectes-modal/insectes-modal.component';
+// import { ButtonAddComponent } from './button-add/button-add.component';
+// import { MeteoComponent } from './meteo/meteo.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +46,10 @@ import { MeteoComponent } from './meteo/meteo.component';
     LoadButtonComponent,
     DeleteWarningFlowerComponent,
     CardMeteoComponent,
-    ButtonAddComponent,
-    MeteoComponent,
+    ArbresModalComponent,
+    InsectesModalComponent,
+    // ButtonAddComponent,
+    // MeteoComponent,
   ],
   imports: [
     BrowserModule,

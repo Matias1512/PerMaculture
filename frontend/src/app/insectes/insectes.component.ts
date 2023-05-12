@@ -15,8 +15,8 @@ export interface DialogData {
   styleUrls: ['./insectes.component.scss']
 })
 export class InsectesComponent implements OnInit{
-
-    insectes : Insectes[] = []
+    bugs: Insectes[] = []
+    public insectes : Insectes[] = []
 
   constructor(private dialog: MatDialog, private service: BugsService) {}
 
@@ -32,9 +32,9 @@ export class InsectesComponent implements OnInit{
   }
 
   showInsect() {
-    this.service.getInsect().subscribe((insect) => {
+    this.service.getInsect().subscribe((bugs) => {
       // Reorder arbre by alphabetical order
-      insect
+      bugs
         .sort((a, b) => {
           if (a.name < b.name) {
             return -1;
@@ -48,31 +48,31 @@ export class InsectesComponent implements OnInit{
           (insectes) =>
             true /* Set other filters here  */
         );
-      this.insectes = insect;
+      this.insectes = bugs;
     });
   }
 
   addSampleInsect() {
     console.log('Adding sample insect');
-    this.service.postInsects().subscribe((insect) => {
-      console.log('Added insect:', insect);
+    this.service.postInsects().subscribe((bugs) => {
+      console.log('Added insect:', bugs);
       this.showInsect();
     });
   }
 
   deletePlant(id: number) {
-    this.service.deleteInsect(id).subscribe((insect) => {
-      console.log('Deleted insect:', insect);
+    this.service.deleteInsect(id).subscribe((bugs) => {
+      console.log('Deleted insect:', bugs);
       this.showInsect();
     });
   }
-  openDeleteDialog(insect: Insectes) {
+  openDeleteDialog(bugs: Insectes) {
     // Open a dialog to confirm deletion
     //  const dialogRef = this.dialog.open(DeleteWarningArbresComponent);
 
     // dialogRef.afterClosed().subscribe((result) => {
     //   if (result) {
-    //     this.deletePlant(insect.id);
+    //     this.deletePlant(bugs.id);
     // }
     //  });
   }
