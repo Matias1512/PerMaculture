@@ -32,6 +32,8 @@ import { InsectesModalComponent } from './insectes/insectes-modal/insectes-modal
 import { DeleteWarningArbresComponent } from './arbres/delete-warning-arbres/delete-warning-arbres.component';
 import { DeleteWarningInsectesComponent } from './insectes/delete-warning-insectes/delete-warning-insectes.component';
 import { AddFlowerModalComponent } from './flowers/add-flower-modal/add-flower-modal.component';
+import { AddArbreModalComponent } from './arbres/add-arbre-modal/add-arbre-modal.component';
+import { AddInsecteModalComponent } from './insectes/add-insecte-modal/add-insecte-modal.component';
 // import { ButtonAddComponent } from './button-add/button-add.component';
 // import { MeteoComponent } from './meteo/meteo.component';
 
@@ -54,6 +56,8 @@ import { AddFlowerModalComponent } from './flowers/add-flower-modal/add-flower-m
     DeleteWarningArbresComponent,
     DeleteWarningInsectesComponent,
     AddFlowerModalComponent,
+    AddArbreModalComponent,
+    AddInsecteModalComponent,
     // ButtonAddComponent,
     // MeteoComponent,
   ],
