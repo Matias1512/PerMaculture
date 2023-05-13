@@ -14,11 +14,11 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-
 import { FlowersComponent } from './flowers/flowers.component';
 import { InsectesComponent } from './insectes/insectes.component';
 import { Arbrescomponents} from './arbres/arbes.component';
@@ -27,8 +27,13 @@ import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.compon
 import { LoadButtonComponent } from './forms/load-button/load-button.component';
 import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
 import { CardMeteoComponent } from './card-meteo/card-meteo.component';
-import { ButtonAddComponent } from './button-add/button-add.component';
-import { MeteoComponent } from './meteo/meteo.component';
+import { ArbresModalComponent } from './arbres/arbres-modal/arbres-modal.component';
+import { InsectesModalComponent } from './insectes/insectes-modal/insectes-modal.component';
+import { DeleteWarningArbresComponent } from './arbres/delete-warning-arbres/delete-warning-arbres.component';
+import { DeleteWarningInsectesComponent } from './insectes/delete-warning-insectes/delete-warning-insectes.component';
+import { AddFlowerModalComponent } from './flowers/add-flower-modal/add-flower-modal.component';
+// import { ButtonAddComponent } from './button-add/button-add.component';
+// import { MeteoComponent } from './meteo/meteo.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +49,13 @@ import { MeteoComponent } from './meteo/meteo.component';
     LoadButtonComponent,
     DeleteWarningFlowerComponent,
     CardMeteoComponent,
-    ButtonAddComponent,
-    MeteoComponent,
+    ArbresModalComponent,
+    InsectesModalComponent,
+    DeleteWarningArbresComponent,
+    DeleteWarningInsectesComponent,
+    AddFlowerModalComponent,
+    // ButtonAddComponent,
+    // MeteoComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +71,7 @@ import { MeteoComponent } from './meteo/meteo.component';
     MatDialogModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
