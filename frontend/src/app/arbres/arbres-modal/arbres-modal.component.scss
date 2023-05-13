@@ -1,0 +1,44 @@
+.picture{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+  }
+
+h1{
+    display: flex;
+    justify-content: center;
+    color: black;
+    background-color: darkseagreen;
+}
+
+.container-modal-card{
+    background-color: darkseagreen;
+    width: 800px;
+    border-radius: 10px;
+}
+
+p{
+    color: black;
+    text-align: center;
+    width: auto;
+    height: auto;
+}
+
+.buttonClose{
+    color: black;
+    background-color: darkseagreen;
+    display: flex;
+    justify-content: center;
+}
+
+.title{
+    display: flex;
+    align-items: flex-end;
+    font-size: 30px;
+    color: black;
+    background-color: darkseagreen;
+}
+
+.mat-mdc-dialog-actions.mdc-dialog__actions{
+    background-color: darkseagreen;
+}
