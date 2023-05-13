@@ -1,0 +1,22 @@
+<div class="container-modal-card">
+    <h1 mat-dialog-title>Add flower</h1>
+    <div mat-dialog-content>
+        <div mat-form-field appearance="fill">
+            <div mat-label>Name</div>
+            <input matInput [(ngModel)]="data.name">
+        </div>
+        <div mat-form-field appearance="fill">
+            <div mat-label>Description</div>
+            <textarea matInput [(ngModel)]="data.description"></textarea>
+        </div>
+        <div mat-form-field appearance="fill">
+            <div mat-label>Image url</div>
+            <input matInput [(ngModel)]="data.image_url">
+        </div>
+    </div>
+    <div mat-dialog-actions>
+    <button mat-button mat-dialog-close >Close</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Add</button>
+    </div>
+</div>
+  
