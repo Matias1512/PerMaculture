@@ -2,9 +2,15 @@
     <h1 mat-dialog-title>Add flower</h1>
     <div mat-dialog-content>
         <div mat-form-field appearance="fill">
-            <div mat-label>Favorite Animal</div>
+            <div mat-label>Name</div>
             <input matInput [(ngModel)]="data.name">
-            <input matInput [(ngModel)]="data.description">
+        </div>
+        <div mat-form-field appearance="fill">
+            <div mat-label>Description</div>
+            <textarea matInput [(ngModel)]="data.description"></textarea>
+        </div>
+        <div mat-form-field appearance="fill">
+            <div mat-label>Image url</div>
             <input matInput [(ngModel)]="data.image_url">
         </div>
     </div>

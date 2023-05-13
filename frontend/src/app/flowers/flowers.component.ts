@@ -26,9 +26,9 @@ export interface DialogAddData {
 export class FlowersComponent implements OnInit {
   plants: Plant[] = [];
   public flowers: Plant[] = [];
-  name: string = "flower";
-  image_url: string = "image_url";
-  description: string = "description";
+  name: string = "";
+  image_url: string = "";
+  description: string = "";
 
   constructor(private dialog: MatDialog, private service: PlantsService) {}
 

@@ -14,11 +14,11 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-
 import { FlowersComponent } from './flowers/flowers.component';
 import { InsectesComponent } from './insectes/insectes.component';
 import { Arbrescomponents} from './arbres/arbes.component';
@@ -71,6 +71,7 @@ import { AddFlowerModalComponent } from './flowers/add-flower-modal/add-flower-m
     MatDialogModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,7 +13,6 @@ h1{
 
 .container-modal-card{
     background-color: darkseagreen;
-    width: 800px;
     border-radius: 10px;
 }
 
@@ -40,5 +39,8 @@ p{
 }
 
 .mat-mdc-dialog-actions.mdc-dialog__actions{
-    background-color: darkseagreen;
+    color: rgba(255, 255, 255);
+    font-family: var(--mdc-dialog-subhead-font, "Arial");
+    font-weight: var(--mdc-dialog-subhead-weight, 500);
+    letter-spacing: var(--mdc-dialog-subhead-tracking, 1px);
 }
