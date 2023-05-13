@@ -20,11 +20,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 
 import { FlowersComponent } from './flowers/flowers.component';
-import { InsectesComponent } from './insectes/insectes.component';
-import { Arbrescomponents} from './arbres/arbes.component';
-import { PotagerComponent } from './potager/potager.component';
 import { FlowerModalComponent } from './flowers/flower-modal/flower-modal.component';
-import { LoadButtonComponent } from './forms/load-button/load-button.component';
+// import { AddFlowerModalComponent } from './flowers/add-flower-modal/add-flower-modal.component';
 import { DeleteWarningFlowerComponent } from './flowers/delete-warning-flower/delete-warning-flower.component';
 import { CardMeteoComponent } from './card-meteo/card-meteo.component';
 import { AddArbreModalComponent } from './arbres/add-arbre-modal/add-arbre-modal.component';
