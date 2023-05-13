@@ -3,8 +3,6 @@ import { Insectes } from '../models/insectes.interface';
 import {MatDialog} from "@angular/material/dialog";
 import {BugsService} from "../services/bugs.service";
 import {FlowerModalComponent} from "../flowers/flower-modal/flower-modal.component";
-import { DeleteWarningInsectesComponent } from './delete-warning-insectes/delete-warning-insectes.component';
-import { InsectesModalComponent } from './insectes-modal/insectes-modal.component';
 
 
 export interface DialogData {
@@ -17,8 +15,8 @@ export interface DialogData {
   styleUrls: ['./insectes.component.scss']
 })
 export class InsectesComponent implements OnInit{
-    bugs: Insectes[] = []
-    public insectes : Insectes[] = []
+
+    insectes : Insectes[] = []
 
   constructor(private dialog: MatDialog, private service: BugsService) {}
 
@@ -27,16 +25,16 @@ export class InsectesComponent implements OnInit{
     this.showInsect();
   }
 
-  openDialog(bug: Insectes) {
-    const dialogRef = this.dialog.open(InsectesModalComponent, {
-      data: { insectes: bug },
+  openDialog(insect: Insectes) {
+    const dialogRef = this.dialog.open(FlowerModalComponent, {
+      data: { insectes: insect },
     });
   }
 
   showInsect() {
-    this.service.getInsect().subscribe((bugs) => {
+    this.service.getInsect().subscribe((insect) => {
       // Reorder arbre by alphabetical order
-      bugs
+      insect
         .sort((a, b) => {
           if (a.name < b.name) {
             return -1;
@@ -50,33 +48,33 @@ export class InsectesComponent implements OnInit{
           (insectes) =>
             true /* Set other filters here  */
         );
-      this.insectes = bugs;
+      this.insectes = insect;
     });
   }
 
   addSampleInsect() {
     console.log('Adding sample insect');
-    this.service.postInsects().subscribe((bugs) => {
-      console.log('Added insect:', bugs);
+    this.service.postInsects().subscribe((insect) => {
+      console.log('Added insect:', insect);
       this.showInsect();
     });
   }
 
   deletePlant(id: number) {
-    this.service.deleteInsect(id).subscribe((bugs) => {
-      console.log('Deleted insect:', bugs);
+    this.service.deleteInsect(id).subscribe((insect) => {
+      console.log('Deleted insect:', insect);
       this.showInsect();
     });
   }
-  openDeleteDialog(bugs: Insectes) {
+  openDeleteDialog(insect: Insectes) {
     // Open a dialog to confirm deletion
-     const dialogRef = this.dialog.open(DeleteWarningInsectesComponent);
+    //  const dialogRef = this.dialog.open(DeleteWarningArbresComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.deletePlant(bugs.id);
-      }
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result) {
+    //     this.deletePlant(insect.id);
+    // }
+    //  });
   }
 
   verifyImageURL(url: string): string {
