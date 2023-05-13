@@ -35,9 +35,9 @@ export class Arbrescomponents  implements OnInit{
     this.showArbres();
   }
 
-  openDialog(trees: Arbres) {
-    const dialogRef = this.dialog.open(ArbresModalComponent, {
-      data: { arbre: trees },
+  openDialog(arbre: Arbres) {
+    const dialogRef = this.dialog.open(FlowerModalComponent, {
+      data: { arbres: arbre },
     });
   }
 
@@ -59,7 +59,7 @@ export class Arbrescomponents  implements OnInit{
         this.showArbres();
         });
       }
-      
+
     });
   }
 
@@ -85,27 +85,28 @@ export class Arbrescomponents  implements OnInit{
   }
 
   addSampleArbre() {
-    console.log('Adding sample tree');
-    this.service.postArbres().subscribe((trees) => {
-      console.log('Added arbre:', trees);
+    console.log('Adding sample arbre');
+    this.service.postArbres().subscribe((arbre) => {
+      console.log('Added arbre:', arbre);
       this.showArbres();
     });
   }
 
   deletePlant(id: number) {
-    this.service.deleteArbre(id).subscribe((trees) => {
-      console.log('Deleted arbre:', trees);
+    this.service.deleteArbre(id).subscribe((arbre) => {
+      console.log('Deleted arbre:', arbre);
       this.showArbres();
     });
   }
-  openDeleteDialog(trees: Arbres) {
-    const dialogRef = this.dialog.open(DeleteWarningArbresComponent);
+  openDeleteDialog(arbre: Arbres) {
+    // Open a dialog to confirm deletion
+  //  const dialogRef = this.dialog.open(DeleteWarningArbresComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.deletePlant(trees.id);
-      }
-    });
+   // dialogRef.afterClosed().subscribe((result) => {
+   //   if (result) {
+   //     this.deletePlant(plant.id);
+     // }
+  //  });
   }
 
   verifyImageURL(url: string): string {
