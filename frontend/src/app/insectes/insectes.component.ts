@@ -29,7 +29,7 @@ export class InsectesComponent implements OnInit{
   public insectes : Insectes[] = []
   name: string = "";
   image_url: string = "";
-  description: string = ""; 
+  description: string = "";
   polinisateur: boolean = false;
 
   constructor(private dialog: MatDialog, private service: BugsService) {}
@@ -39,9 +39,9 @@ export class InsectesComponent implements OnInit{
     this.showInsect();
   }
 
-  openDialog(bug: Insectes) {
-    const dialogRef = this.dialog.open(InsectesModalComponent, {
-      data: { insectes: bug },
+  openDialog(insect: Insectes) {
+    const dialogRef = this.dialog.open(FlowerModalComponent, {
+      data: { insectes: insect },
     });
   }
 
@@ -64,14 +64,14 @@ export class InsectesComponent implements OnInit{
         this.showInsect();
         });
       }
-      
+
     });
   }
 
   showInsect() {
-    this.service.getInsect().subscribe((bugs) => {
+    this.service.getInsect().subscribe((insect) => {
       // Reorder arbre by alphabetical order
-      bugs
+      insect
         .sort((a, b) => {
           if (a.name < b.name) {
             return -1;
@@ -85,33 +85,33 @@ export class InsectesComponent implements OnInit{
           (insectes) =>
             true /* Set other filters here  */
         );
-      this.insectes = bugs;
+      this.insectes = insect;
     });
   }
 
   addSampleInsect() {
     console.log('Adding sample insect');
-    this.service.postInsects().subscribe((bugs) => {
-      console.log('Added insect:', bugs);
+    this.service.postInsects().subscribe((insect) => {
+      console.log('Added insect:', insect);
       this.showInsect();
     });
   }
 
   deletePlant(id: number) {
-    this.service.deleteInsect(id).subscribe((bugs) => {
-      console.log('Deleted insect:', bugs);
+    this.service.deleteInsect(id).subscribe((insect) => {
+      console.log('Deleted insect:', insect);
       this.showInsect();
     });
   }
-  openDeleteDialog(bugs: Insectes) {
+  openDeleteDialog(insect: Insectes) {
     // Open a dialog to confirm deletion
-     const dialogRef = this.dialog.open(DeleteWarningInsectesComponent);
+    //  const dialogRef = this.dialog.open(DeleteWarningArbresComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.deletePlant(bugs.id);
-      }
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result) {
+    //     this.deletePlant(insect.id);
+    // }
+    //  });
   }
 
   verifyImageURL(url: string): string {

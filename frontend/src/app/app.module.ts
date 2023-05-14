@@ -14,11 +14,11 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+
 import { FlowersComponent } from './flowers/flowers.component';
 import { InsectesComponent } from './insectes/insectes.component';
 import { Arbrescomponents} from './arbres/arbes.component';
@@ -34,8 +34,8 @@ import { DeleteWarningInsectesComponent } from './insectes/delete-warning-insect
 import { AddFlowerModalComponent } from './flowers/add-flower-modal/add-flower-modal.component';
 import { AddArbreModalComponent } from './arbres/add-arbre-modal/add-arbre-modal.component';
 import { AddInsecteModalComponent } from './insectes/add-insecte-modal/add-insecte-modal.component';
-// import { ButtonAddComponent } from './button-add/button-add.component';
-// import { MeteoComponent } from './meteo/meteo.component';
+import { ButtonAddComponent } from './button-add/button-add.component';
+import { MeteoComponent } from './meteo/meteo.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +58,8 @@ import { AddInsecteModalComponent } from './insectes/add-insecte-modal/add-insec
     AddFlowerModalComponent,
     AddArbreModalComponent,
     AddInsecteModalComponent,
-    // ButtonAddComponent,
-    // MeteoComponent,
+    ButtonAddComponent,
+    MeteoComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +75,6 @@ import { AddInsecteModalComponent } from './insectes/add-insecte-modal/add-insec
     MatDialogModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
