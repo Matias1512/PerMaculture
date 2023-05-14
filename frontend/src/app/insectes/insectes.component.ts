@@ -1,12 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import { Insectes } from '../models/insectes.interface';
 import {MatDialog} from "@angular/material/dialog";
-import {BugsService} from "../services/bugs.service";
+import {BugsService, PostInsects} from "../services/bugs.service";
 import {FlowerModalComponent} from "../flowers/flower-modal/flower-modal.component";
+import { DeleteWarningInsectesComponent } from './delete-warning-insectes/delete-warning-insectes.component';
+import { InsectesModalComponent } from './insectes-modal/insectes-modal.component';
+import { AddInsecteModalComponent } from './add-insecte-modal/add-insecte-modal.component';
 
 
 export interface DialogData {
   insect: Insectes;
+}
+
+export interface DialogAddData {
+  name: string;
+  image_url: string;
+  description: string;
+  polinisateur: boolean;
 }
 
 @Component({
@@ -15,8 +25,12 @@ export interface DialogData {
   styleUrls: ['./insectes.component.scss']
 })
 export class InsectesComponent implements OnInit{
-
-    insectes : Insectes[] = []
+  bugs: Insectes[] = []
+  public insectes : Insectes[] = []
+  name: string = "";
+  image_url: string = "";
+  description: string = "";
+  polinisateur: boolean = false;
 
   constructor(private dialog: MatDialog, private service: BugsService) {}
 
@@ -28,6 +42,29 @@ export class InsectesComponent implements OnInit{
   openDialog(insect: Insectes) {
     const dialogRef = this.dialog.open(FlowerModalComponent, {
       data: { insectes: insect },
+    });
+  }
+
+  openAddDialog(){
+    const dialogRef = this.dialog.open(AddInsecteModalComponent, {
+      data: {name: this.name, animal: this.image_url, description: this.description},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("Result : " + result.name);
+      const bugs: PostInsects = {
+        name: result.name,
+        description: result.description,
+        image_url: result.image_url,
+        pollinator: result.polinisateur
+      }
+      if(result.name){
+        this.service.postInsects(bugs).subscribe((bug) => {
+        console.log('Added plant:', bug);
+        this.showInsect();
+        });
+      }
+
     });
   }
 

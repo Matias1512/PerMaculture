@@ -1,0 +1,45 @@
+.picture{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+  }
+
+h1{
+    display: flex;
+    justify-content: center;
+    color: black;
+    background-color: darkseagreen;
+}
+
+.container-modal-card{
+    background-color: darkseagreen;
+}
+
+p{
+    color: black;
+    text-align: center;
+    width: auto;
+    height: auto;
+}
+
+.buttonClose{
+    color: black;
+    background-color: darkseagreen;
+    display: flex;
+    justify-content: center;
+}
+
+.title{
+    display: flex;
+    align-items: flex-end;
+    font-size: 30px;
+    color: black;
+    background-color: darkseagreen;
+}
+
+.mat-mdc-dialog-actions.mdc-dialog__actions{
+    color: rgba(255, 255, 255);
+    font-family: var(--mdc-dialog-subhead-font, "Arial");
+    font-weight: var(--mdc-dialog-subhead-weight, 500);
+    letter-spacing: var(--mdc-dialog-subhead-tracking, 1px);
+}

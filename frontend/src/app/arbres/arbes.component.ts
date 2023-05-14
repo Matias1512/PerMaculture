@@ -1,11 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import { Arbres } from '../models/arbres.interface';
 import {MatDialog} from "@angular/material/dialog";
-import {ArbresService} from "../services/arbres.service";
+import {ArbresService, PostArbres} from "../services/arbres.service";
 import {FlowerModalComponent} from "../flowers/flower-modal/flower-modal.component";
+import { ArbresModalComponent } from './arbres-modal/arbres-modal.component';
+import { DeleteWarningArbresComponent } from './delete-warning-arbres/delete-warning-arbres.component';
+import { AddArbreModalComponent } from './add-arbre-modal/add-arbre-modal.component';
 
 export interface DialogData {
   arbre: Arbres;
+}
+
+export interface DialogAddData {
+  name: string;
+  image_url: string;
+  description: string;
 }
 
 @Component({
@@ -14,9 +23,11 @@ export interface DialogData {
   styleUrls: ['./arbes.component.scss']
 })
 export class Arbrescomponents  implements OnInit{
-
-  arbres: Arbres[] = [];
-  public Arbres: Arbres[] = [];
+  trees: Arbres[] = [];
+  public arbres: Arbres[] = [];
+  name: string = "";
+  image_url: string = "";
+  description: string = "";
 
   constructor(private dialog: MatDialog, private service: ArbresService) {}
 
@@ -27,6 +38,28 @@ export class Arbrescomponents  implements OnInit{
   openDialog(arbre: Arbres) {
     const dialogRef = this.dialog.open(FlowerModalComponent, {
       data: { arbres: arbre },
+    });
+  }
+
+  openAddDialog(){
+    const dialogRef = this.dialog.open(AddArbreModalComponent, {
+      data: {name: this.name, animal: this.image_url, description: this.description},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("Result : " + result.name);
+      const plant: PostArbres = {
+        name: result.name,
+        description: result.description,
+        image_url: result.image_url
+      }
+      if(result.name){
+        this.service.postArbres(plant).subscribe((plant) => {
+        console.log('Added plant:', plant);
+        this.showArbres();
+        });
+      }
+
     });
   }
 
