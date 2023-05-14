@@ -39,6 +39,9 @@ import { PotagerComponent } from './potager/potager.component';
 import { LoadButtonComponent } from './forms/load-button/load-button.component';
 import { CardMeteoComponent } from './card-meteo/card-meteo.component';
 
+// import { ButtonAddComponent } from './button-add/button-add.component';
+// import { MeteoComponent } from './meteo/meteo.component';
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -3,8 +3,6 @@ import { Insectes } from '../models/insectes.interface';
 import {MatDialog} from "@angular/material/dialog";
 import {BugsService, PostInsects} from "../services/bugs.service";
 import {FlowerModalComponent} from "../flowers/flower-modal/flower-modal.component";
-import { DeleteWarningInsectesComponent } from './delete-warning-insectes/delete-warning-insectes.component';
-import { InsectesModalComponent } from './insectes-modal/insectes-modal.component';
 import { AddInsecteModalComponent } from './add-insecte-modal/add-insecte-modal.component';
 
 
