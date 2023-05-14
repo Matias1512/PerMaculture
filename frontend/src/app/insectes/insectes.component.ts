@@ -47,7 +47,7 @@ export class InsectesComponent implements OnInit{
 
   openAddDialog(){
     const dialogRef = this.dialog.open(AddInsecteModalComponent, {
-      data: {name: this.name, animal: this.image_url, description: this.description},
+      data: {name: this.name, animal: this.image_url, description: this.description, polinisateur : this.polinisateur},
     });
 
     dialogRef.afterClosed().subscribe(result => {
