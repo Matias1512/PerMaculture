@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { FlowerModalComponent } from './flower-modal/flower-modal.component';
-import { PlantsService } from '../services/plants.service';
+import { PlantsService, PostPlant } from '../services/plants.service';
 import { Plant } from '../models/plant.interface';
 import { DeleteWarningFlowerComponent } from './delete-warning-flower/delete-warning-flower.component';
+import { AddFlowerModalComponent } from './add-flower-modal/add-flower-modal.component';
 
 const PLANT_TYPES = {};
 
 export interface DialogData {
   flower: Plant;
+}
+
+export interface DialogAddData {
+  name: string;
+  image_url: string;
+  description: string;
 }
 
 @Component({
@@ -19,6 +26,9 @@ export interface DialogData {
 export class FlowersComponent implements OnInit {
   plants: Plant[] = [];
   public flowers: Plant[] = [];
+  name: string = "";
+  image_url: string = "";
+  description: string = "";
 
   constructor(private dialog: MatDialog, private service: PlantsService) {}
 
@@ -29,6 +39,28 @@ export class FlowersComponent implements OnInit {
   openDialog(plant: Plant) {
     const dialogRef = this.dialog.open(FlowerModalComponent, {
       data: { flower: plant },
+    });
+  }
+
+  openAddDialog(){
+    const dialogRef = this.dialog.open(AddFlowerModalComponent, {
+      data: {name: this.name, animal: this.image_url, description: this.description},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("Result : " + result.name);
+      const plant: PostPlant = {
+        name: result.name,
+        description: result.description,
+        image_url: result.image_url
+      }
+      if(result.name){
+        this.service.postPlant(plant).subscribe((plant) => {
+        console.log('Added plant:', plant);
+        this.showPlants();
+        });
+      }
+      
     });
   }
 

@@ -3,5 +3,4 @@ export interface Insectes {
   name: string;
   description: string;
   image_url: string;
-  pollinator?: boolean;
-}
+  pollilator?: boolean;

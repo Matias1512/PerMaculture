@@ -1,0 +1,12 @@
+<div class="container-modal-card">
+    <h1 mat-dialog-title class="title">{{data.insect.name}}</h1>
+    <div mat-dialog-content class="picture">
+      <img mat-card-image [src]="data.insect.image_url" alt="Photo of a {{data.insect.name}}">
+    </div>
+    <div mat-dialog-content>
+      <p>{{data.insect.description}}</p>
+    </div>
+    <div mat-dialog-actions class="buttonClose">
+      <button mat-button mat-dialog-close >Close</button>
+    </div>
+  </div>

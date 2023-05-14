@@ -1,0 +1,13 @@
+<div class="container-modal-card">
+    <h1 mat-dialog-title class="title">{{data.arbre.name}}</h1>
+    <div mat-dialog-content class="picture">
+      <img mat-card-image [src]="data.arbre.image_url" alt="Photo of a {{data.arbre.name}}">
+    </div>
+    <div mat-dialog-content>
+      <p>{{data.arbre.description}}</p>
+    </div>
+    <div mat-dialog-actions class="buttonClose">
+      <button mat-button mat-dialog-close >Close</button>
+    </div>
+  </div>
+  
