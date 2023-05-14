@@ -100,8 +100,6 @@ export class FlowersComponent implements OnInit {
     });
   }
 
-  openAddDialog() {}
-
   openDeleteDialog(plant: Plant) {
     // Open a dialog to confirm deletion
     const dialogRef = this.dialog.open(DeleteWarningFlowerComponent);

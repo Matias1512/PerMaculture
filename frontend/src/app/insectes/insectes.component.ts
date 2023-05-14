@@ -68,52 +68,6 @@ export class InsectesComponent implements OnInit{
     });
   }
 
-  openAddDialog(){
-    const dialogRef = this.dialog.open(AddInsecteModalComponent, {
-      data: {name: this.name, animal: this.image_url, description: this.description},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("Result : " + result.name);
-      const bugs: PostInsects = {
-        name: result.name,
-        description: result.description,
-        image_url: result.image_url,
-        pollinator: result.polinisateur
-      }
-      if(result.name){
-        this.service.postInsects(bugs).subscribe((bug) => {
-        console.log('Added plant:', bug);
-        this.showInsect();
-        });
-      }
-
-    });
-  }
-
-  openAddDialog(){
-    const dialogRef = this.dialog.open(AddInsecteModalComponent, {
-      data: {name: this.name, animal: this.image_url, description: this.description},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("Result : " + result.name);
-      const bugs: PostInsects = {
-        name: result.name,
-        description: result.description,
-        image_url: result.image_url,
-        pollinator: result.polinisateur
-      }
-      if(result.name){
-        this.service.postInsects(bugs).subscribe((bug) => {
-        console.log('Added plant:', bug);
-        this.showInsect();
-        });
-      }
-
-    });
-  }
-
   showInsect() {
     this.service.getInsect().subscribe((bugs) => {
       // Reorder arbre by alphabetical order
