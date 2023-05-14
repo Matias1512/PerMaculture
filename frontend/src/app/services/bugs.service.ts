@@ -15,6 +15,7 @@ export type PostInsects = {
   name: string;
   description: string;
   image_url: string;
+  pollinator?: boolean;
 }
 
 @Injectable({

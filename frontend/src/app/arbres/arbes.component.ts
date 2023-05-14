@@ -3,8 +3,6 @@ import { Arbres } from '../models/arbres.interface';
 import {MatDialog} from "@angular/material/dialog";
 import {ArbresService, PostArbres} from "../services/arbres.service";
 import {FlowerModalComponent} from "../flowers/flower-modal/flower-modal.component";
-import { ArbresModalComponent } from './arbres-modal/arbres-modal.component';
-import { DeleteWarningArbresComponent } from './delete-warning-arbres/delete-warning-arbres.component';
 import { AddArbreModalComponent } from './add-arbre-modal/add-arbre-modal.component';
 
 export interface DialogData {
