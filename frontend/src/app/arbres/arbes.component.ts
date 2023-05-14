@@ -63,6 +63,50 @@ export class Arbrescomponents  implements OnInit{
     });
   }
 
+  openAddDialog(){
+    const dialogRef = this.dialog.open(AddArbreModalComponent, {
+      data: {name: this.name, animal: this.image_url, description: this.description},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("Result : " + result.name);
+      const plant: PostArbres = {
+        name: result.name,
+        description: result.description,
+        image_url: result.image_url
+      }
+      if(result.name){
+        this.service.postArbres(plant).subscribe((plant) => {
+        console.log('Added plant:', plant);
+        this.showArbres();
+        });
+      }
+
+    });
+  }
+
+  openAddDialog(){
+    const dialogRef = this.dialog.open(AddArbreModalComponent, {
+      data: {name: this.name, animal: this.image_url, description: this.description},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("Result : " + result.name);
+      const plant: PostArbres = {
+        name: result.name,
+        description: result.description,
+        image_url: result.image_url
+      }
+      if(result.name){
+        this.service.postArbres(plant).subscribe((plant) => {
+        console.log('Added plant:', plant);
+        this.showArbres();
+        });
+      }
+
+    });
+  }
+
   showArbres() {
     this.service.getArbres().subscribe((arbres) => {
       // Reorder arbre by alphabetical order
