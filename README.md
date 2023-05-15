@@ -1,4 +1,4 @@
-## Nous n'avons pas réussi à merge dev dans main il y avait beaucoup trop de conflits donc tout est sur la branch dev désoler
+## Nous n'avons pas réussi à merge dev dans main il y avait beaucoup trop de conflits donc tout est sur la branch dev désolé
 
 # Ynov - Advanced frontend developpement
 
